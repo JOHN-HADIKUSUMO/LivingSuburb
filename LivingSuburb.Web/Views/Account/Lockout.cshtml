@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Lock Out";
+}
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Lock Out</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active">Lock Out</li>
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+<div class="container content">
+
+</div>
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script type="text/javascript">
+        var appModule = angular.module('appModule', []);
+    </script>
+}

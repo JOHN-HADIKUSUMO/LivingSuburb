@@ -1,0 +1,26 @@
+﻿<form name="editCountryForm" autocomplete="off" novalidate class="searchForm sky-form mrt50 mrb20">
+    <header class="text-center">
+        Edit Country No.{{id}}
+    </header>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <fieldset>
+        <section>
+            <label class="label">Code</label>
+            <label class="input">
+                <input type="text" ng-model="code" name="code" required />
+            </label>
+            <span ng-show="code == null && editCountryForm.code.$error.required && editCountryForm.code.$touched" class="text-danger">Name is required.</span>
+        </section>
+        <section>
+            <label class="label">Name</label>
+            <label class="input">
+                <input type="text" ng-model="name" name="name" required />
+            </label>
+            <span ng-show="name.length == null && editCountryForm.name.$error.required && editCountryForm.name.$touched" class="text-danger">Name is required.</span>
+        </section>
+    </fieldset>
+    <footer class="text-right">
+        <button type="submit" class="btn-u" ng-click="backClick()">Back</button>
+        <button type="submit" class="btn-u" ng-click="updateClick()" ng-disabled="editCountryForm.$invalid">Update</button>
+    </footer>
+</form>

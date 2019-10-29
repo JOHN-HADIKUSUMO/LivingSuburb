@@ -1,0 +1,39 @@
+﻿<form name="$ctrl.addSuburbForm" autocomplete="off" novalidate class="searchForm sky-form mrt50 mrb20">
+    <header class="text-center">Enter A New Suburb</header>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <fieldset>
+        <section>
+            <label class="label">Names</label>
+            <label class="input">
+                <textarea ng-model="$ctrl.names" name="names" style="width:100%;height:300px;border:solid 1px #d4cdcd" required></textarea>
+            </label>
+            <span ng-show="$ctrl.names.length == null && $ctrl.addSuburbForm.names.$error.required && $ctrl.addSuburbForm.names.$touched" class="text-danger">names are required.</span>
+        </section>
+        <section>
+            <label class="label">States</label>
+            <label class="select">
+                <select ng-model="$ctrl.state" name="state" required>
+                    <option value="1">NSW</option>
+                    <option value="2">VIC</option>
+                    <option value="3">WA</option>
+                    <option value="4">NT</option>
+                    <option value="5">QLD</option>
+                    <option value="6">ACT</option>
+                    <option value="7">TAS</option>
+                </select>
+                <i></i>
+            </label>
+            <span ng-show="$ctrl.state == null && $ctrl.addSuburbForm.state.$error.required && $ctrl.addSuburbForm.state.$touched" class="text-danger">state is required.</span>
+            <span ng-show="$ctrl.state == null && $ctrl.addSuburbForm.state.$error.required && $ctrl.addSuburbForm.state.$touched" class="text-danger">state is required.</span>
+        </section>
+        <section>
+            <label class="label">Established</label>
+            <label class="input">
+                <input type="text" ng-model="$ctrl.established" name="established" />
+            </label>
+        </section>
+    </fieldset>
+    <footer class="text-right">
+        <button type="submit" ng-class="{'btn-u-disabled':$ctrl.addSuburbForm.$invalid,'btn-u':!$ctrl.addSuburbForm.$invalid}" ng-click="$ctrl.btnClick()" ng-disabled="$ctrl.addSuburbForm.$invalid">Submit</button>
+    </footer>
+</form>

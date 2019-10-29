@@ -1,0 +1,46 @@
+﻿<form name="addCarouselForm" autocomplete="off" novalidate class="searchForm sky-form mrt50 mrb20">
+    <header class="text-center">Enter A New Carousel</header>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <fieldset>
+        <section class="text-center">
+            <img ng-src="{{url}}" class="img-responsive" style="margin-left:auto;margin-right:auto;" />
+            <input type="file" class="hidden" upload-files required />
+        </section>
+        <section class="text-right">
+            <button type="submit" class="btn-u" ng-click="uploadClick()">Upload</button>
+        </section>
+        <section>
+            <label class="label">Location</label>
+            <label class="input">
+                <input type="text" ng-model="location" name="location" required />
+            </label>
+            <span ng-show="location.length == null && addCarouselForm.location.$error.required && addCarouselForm.location.$touched" class="text-danger">Location is required.</span>
+        </section>
+        <section>
+            <label class="label">Proverb</label>
+            <label class="input">
+                <input type="text" ng-model="proverb" name="proverb" required />
+            </label>
+            <span ng-show="proverb.length == null && addCarouselForm.proverb.$error.required && addCarouselForm.proverb.$touched" class="text-danger">Proverb is required.</span>
+        </section>
+        <section>
+            <label class="label">Source</label>
+            <label class="input">
+                <input type="text" ng-model="source" name="source" required />
+            </label>
+            <span ng-show="source.length == null && addCarouselForm.source.$error.required && addCarouselForm.source.$touched" class="text-danger">Source is required.</span>
+        </section>
+        <section>
+            <label class="label">Publishing Date</label>
+            <label class="input">
+                <input type="text" id="publishedDate" ng-model="publishedDate" name="publishedDate" required />
+            </label>
+            <span ng-show="publishedDate.length == null && addCarouselForm.publishedDate.$error.required && addCarouselForm.publishedDate.$touched" class="text-danger">Publishing date is required.</span>
+        </section>
+    </fieldset>
+    <footer class="text-right">
+        <button type="submit" class="btn-u" ng-click="clearClick()">Clear</button>
+        <button type="submit" ng-class="{'btn-u':addCarouselForm.$valid,'btn-u-disabled':addCarouselForm.$invalid}" ng-click="submitClick()" ng-disabled="addCarouselForm.$invalid">Submit</button>
+        <p class="text-right"><small><i><b>Only 1425 x 600 pixels image (jpg, jpeg, png or gif format) is allowed.</b></i></small></p>
+    </footer>
+</form>

@@ -1,0 +1,138 @@
+﻿@*http://unify.satuindonesia.com.au/shortcode_carousels.html*@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"] | LivingSuburb</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="@ViewData["Description"]">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- Web Fonts -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin">
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- CSS Header and Footer -->
+    <link rel="stylesheet" href="/assets/css/headers/header-default.css">
+    <link rel="stylesheet" href="/assets/css/footers/footer-v1.css">
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="/assets/plugins/animate.css">
+    <link rel="stylesheet" href="/assets/plugins/line-icons/line-icons.css">
+    <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/sky-forms-pro/skyforms/css/sky-forms.css">
+    <link rel="stylesheet" href="/assets/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css">
+    <!--[if lt IE 9]><link rel="stylesheet" href="/assets/plugins/sky-forms-pro/skyforms/css/sky-forms-ie8.css"><![endif]-->
+    @RenderSection("Styles", required: false)
+    <link rel="stylesheet" href="/assets/css/custom.css">
+</head>
+<body>
+    <div class="wrapper" ng-app="appModule">
+        <div class="header">
+            <div class="container">
+                <!-- Logo -->
+                <a class="logo" href="/">
+                    <img src="/assets/img/logo1-default.png" alt="LivingSuburb" title="LivingSuburb" />
+                </a>
+                <!-- End Logo -->
+                <!-- Topbar -->
+                <partial name="_LoginPartial" />
+                <!-- End Topbar -->
+                <!-- Toggle get grouped for better mobile display -->
+                <button type="button" class="navbar-toggle  pull-right" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="fa fa-bars"></span>
+                </button>
+                <!-- End Toggle -->
+            </div><!--/end container-->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
+                <div class="container">
+                    <ul class="nav navbar-nav">
+                        <!-- Home -->
+                        <li>
+                            <a asp-area="" asp-controller="Home" asp-action="Index">
+                                Home
+                            </a>
+                        </li>
+                        <!-- End Home -->
+                        <!-- Jobs -->
+                        <li><a href="/Jobs">Jobs</a></li>
+                        <!-- End Jobs -->
+                        <!-- Events -->
+                        @await Html.PartialAsync("_EventsPartial")
+                        <!-- End Events -->
+                        <!-- Suburb -->
+                        <li>
+                            <a href="/Suburbs">
+                                Find Your Suburb
+                            </a>
+                        </li>
+                        <!-- End Suburb -->
+                        <!-- Management -->
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+                        {
+                            @await Html.PartialAsync("_ManagementPartial")
+                        }
+                        <!-- End Management -->
+                        <!-- Dashboard -->
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
+                        {
+                            @await Html.PartialAsync("_DashboardPartial")
+                        }
+                        <!-- End Dashboard -->
+                        <!-- About Us -->
+                        <li>
+                            <a href="/About-Us">
+                                About Us
+                            </a>
+                        </li>
+                        <!-- End About Us -->
+                        <!-- Search Block -->
+                        @await Html.PartialAsync("_SearchPartial")
+                        <!-- End Search Block -->
+                    </ul>
+                </div><!--/end container-->
+            </div><!--/navbar-collapse-->
+        </div>
+        @RenderBody()
+        <div class="footer-v1">
+            @await Html.PartialAsync("_FooterPartial")
+            @await Html.PartialAsync("_CopyRightPartial")
+        </div>
+    </div><!--/End Wrapepr-->
+    <!-- JS Global Compulsory -->
+    <script type="text/javascript" src="/assets/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/plugins/jquery/jquery-migrate.min.js"></script>
+    <script type="text/javascript" src="/assets/plugins/jquery/jquery-ui.js"></script>
+    <script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- JS Implementing Plugins -->
+    <script type="text/javascript" src="/assets/plugins/back-to-top.js"></script>
+    <script type="text/javascript" src="/assets/plugins/smoothScroll.js"></script>
+    <script type="text/javascript" src="/assets/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js"></script>
+    <!-- Angular Js -->
+    <script type="text/javascript" src="/assets/plugins/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/assets/plugins/angular/angular-animate.min.js"></script>
+    <script type="text/javascript" src="/assets/plugins/angular/angular-touch.min.js"></script>
+    <script type="text/javascript" src="/assets/plugins/bootstrap/js/ui-bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/plugins/bootstrap/js/ui-bootstrap-tpls-2.5.0.min.js"></script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131434480-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-131434480-1');
+    </script>
+    <!-- JS Page Level -->
+    <script type="text/javascript" src="/assets/js/app.min.js"></script>
+    <script type="text/javascript">jQuery(document).ready(function () { App.init(); });</script>
+    <!--[if lt IE 9]>
+    <script src="/assets/plugins/respond.js"></script>
+    <script src="/assets/plugins/html5shiv.js"></script>
+    <script src="/assets/plugins/placeholder-IE-fixes.js"></script>
+    <![endif]-->
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

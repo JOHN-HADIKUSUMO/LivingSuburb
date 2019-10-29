@@ -1,0 +1,10 @@
+@using LivingSuburb.Models
+@using LivingSuburb.Services
+@using Microsoft.Extensions.Caching.Memory;
+@inject IMemoryCache cache
+@inject OurMissionService OurMissionService
+@{
+    Task<OurMission> mission = OurMissionService.Get();
+    <div class="headline"><h2>Our Mission</h2></div>
+    @Html.Raw(mission==null?"":mission.Result.Statement)
+}

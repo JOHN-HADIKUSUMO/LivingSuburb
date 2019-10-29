@@ -1,0 +1,68 @@
+﻿
+<div class="row" ng-show="jobs.length > 0">
+    <div class="col-md-12 text-center">
+        <ul class="pagination">
+            <li ng-show="data.first!=null">
+                <a ng-click="firstClick()">First</a>
+            </li>
+            <li ng-show="data.prev!=null">
+                <a ng-click="prevClick()">Prev</a>
+            </li>
+            <li ng-repeat="item in data.pages" ng-class="{active:data.selectedPageNo==item}">
+                <a ng-click="navClick($index,item)">{{item}}</a>
+            </li>
+            <li ng-show="data.next!=null">
+                <a ng-click="nextClick()">Next</a>
+            </li>
+            <li ng-show="data.last!=null">
+                <a ng-click="lastClick()">Last</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-12 text-center">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in jobs" ng-class="{'table-success':item.isApproved,'table-expires':item.isExpired}">
+                    <td align="left">{{item.id}}</td>
+                    <td align="left">{{item.title}},&nbsp;{{item.state}}</td>
+                    <td align="left">{{item.category}}</td>
+                    <td align="left">{{item.strPublishingDate}}</td>
+                    <td align="right">
+                        <button ng-disabled="item.isapproved" ng-class="{'btn-u-disabled':item.isapproved,'btn-u':!item.isapproved}" ng-show="!isdashboard" ng-click="approveClick(item)">Approve</button>
+                        <button class="btn-u" ng-click="editClick(item)">Edit</button>
+                        <button class="btn-u" ng-click="deleteClick(item)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-12 text-center">
+        <ul class="pagination">
+            <li ng-show="data.first!=null">
+                <a ng-click="firstClick()">First</a>
+            </li>
+            <li ng-show="data.prev!=null">
+                <a ng-click="prevClick()">Prev</a>
+            </li>
+            <li ng-repeat="item in data.pages" ng-class="{active:data.selectedPageNo==item}">
+                <a ng-click="navClick($index,item)">{{item}}</a>
+            </li>
+            <li ng-show="data.next!=null">
+                <a ng-click="nextClick()">Next</a>
+            </li>
+            <li ng-show="data.last!=null">
+                <a ng-click="lastClick()">Last</a>
+            </li>
+        </ul>
+    </div>
+</div>
+

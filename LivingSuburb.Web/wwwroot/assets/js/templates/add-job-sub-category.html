@@ -1,0 +1,39 @@
+﻿<form name="$ctrl.addJobSubCategoryForm" autocomplete="off" novalidate class="searchForm sky-form mrt50 mrb20">
+    <header class="text-center">Enter A New JobSubCategory</header>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <fieldset>
+        <section>
+            <label class="label">Name</label>
+            <label class="input">
+                <input type="text" ng-model="$ctrl.name" name="name" required />
+            </label>
+            <span ng-show="$ctrl.name == null && $ctrl.addJobSubCategoryForm.name.$error.required && $ctrl.addJobSubCategoryForm.name.$touched" class="text-danger">Name is required.</span>
+        </section>
+        <section>
+            <label class="label">URL Friendly Name</label>
+            <label class="input">
+                <input type="text" ng-model="$ctrl.nameURL" name="nameURL" required ng-mouseleave="$ctrl.onTitleMouseLeave()" />
+            </label>
+            <span ng-show="$ctrl.nameURL.length == null && $ctrl.addJobSubCategoryForm.nameURL.$error.required && $ctrl.addJobSubCategoryForm.nameURL.$touched" class="text-danger">Name URL friendly is required.</span>
+        </section>
+        <section>
+            <label class="label">Category</label>
+            <label class="select">
+                <select ng-model="$ctrl.category" name="category" ng-options="item.name for item in $ctrl.categoryList track by item.id" ng-change="categoryChange()" required></select>
+                <i></i>
+            </label>
+            <span ng-show="category == undefined && $ctrl.addJobSubCategoryForm.category.$error.required && $ctrl.addJobSubCategoryForm.category.$touched" class="text-danger">Category is required.</span>
+        </section>
+        <section>
+            <label class="label">Rank</label>
+            <label class="input">
+                <input type="text" ng-model="$ctrl.rank" name="rank" required />
+            </label>
+            <span ng-show="$ctrl.rank.length == null && $ctrl.addJobSubCategoryForm.rank.$error.required && $ctrl.addJobSubCategoryForm.rank.$touched" class="text-danger">Rank is required.</span>
+        </section>
+    </fieldset>
+    <footer class="text-right">
+        <button type="submit" class="btn-u" ng-click="$ctrl.clearClick()">Clear</button>
+        <button type="submit" class="btn-u" ng-click="$ctrl.submitClick()" ng-disabled="$ctrl.addJobSubCategoryForm.$invalid">Submit</button>
+    </footer>
+</form>

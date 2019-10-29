@@ -1,0 +1,59 @@
+@using Microsoft.Extensions.Caching.Memory;
+@using Microsoft.Extensions.Configuration;
+@using LivingSuburb.Models;
+@using LivingSuburb.Services
+@inject PreciousMetalService PreciousMetalService
+@inject IMemoryCache cache
+@inject WeatherService Service
+@inject IConfiguration Configuration
+@{
+    const int minutes = 120;
+
+    PreciousMetalModel model = cache.GetOrCreate("PreciousMetal_Update", entry =>
+    {
+        Task<PreciousMetalModel> temp = PreciousMetalService.GetPrices();
+        entry.SlidingExpiration = TimeSpan.FromMinutes(minutes);
+        return temp.Result;
+    });
+}
+
+<div class="headline"><h2>Today's Precious Metals</h2></div>
+<div class="row">
+    <div class="col-md-6">
+        <div style="width:50%;float:left;">
+            <h4>GOLD</h4>
+        </div>
+        <div style="width:50%;float:right;text-align:right;">
+            <h4>@Html.Raw(string.Format("{0:#,##0.000}", model.Gold))</h4>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div style="width:50%;float:left;">
+            <h4>SILVER</h4>
+        </div>
+        <div style="width:50%;float:right;text-align:right;">
+            <h4>@Html.Raw(string.Format("{0:#,##0.000}", model.Silver))</h4>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div style="width:50%;float:left;">
+            <h4>PLATINUM</h4>
+        </div>
+        <div style="width:50%;float:right;text-align:right;">
+            <h4>@Html.Raw(string.Format("{0:#,##0.000}", model.Platinum))</h4>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div style="width:50%;float:left;">
+            <h4>PALLADIUM</h4>
+        </div>
+        <div style="width:50%;float:right;text-align:right;">
+            <h4>@Html.Raw(string.Format("{0:#,##0.000}", model.Palladium))</h4>
+        </div>
+    </div>
+    <div class="col-md-12 text-right">
+        <small>@Html.Raw(string.Format("{0:dddd, dd MMMM yyyy hh:mm tt}", model.LastUpdate))</small>
+    </div>
+</div>

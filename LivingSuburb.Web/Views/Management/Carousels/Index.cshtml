@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Management | Corousels";
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Carousels</h1>
+        <ul class="pull-right breadcrumb">
+            <li>Management</li>
+            <li class="active">Carousels</li>
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+<div class="container content" ng-controller="carouselListController">
+    <div class="row">
+        <form class="sky-form no-padding no-margin searchForm" novalidate autocomplete="off" style="border:none;">
+            <div class="col-md-offset-2 col-md-7">
+                <fieldset class="no-padding">
+                    <section>
+                        <label class="label">Keywords</label>
+                        <label class="input">
+                            <input type="text" ng-model="keywords" name="keywords" ng-keyup="onKeyup()" />
+                        </label>
+                        <div class="list input" ng-show="keywordlist.length > 0">
+                            <ul>
+                                <li ng-repeat="item in keywordlist">
+                                    <p><a ng-click="onSelected(item)">{{item}}</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                </fieldset>
+            </div>
+            <div class="col-md-1">
+                <fieldset class="no-padding">
+                    <section>
+                        <label class="label">&nbsp;</label>
+                        <button type="submit" class="btn-u" ng-click="btnClick()">Search</button>
+                    </section>
+                </fieldset>
+            </div>
+        </form>
+        <div class="col-md-12">
+            <img class="pull-right" ng-show="isprogressing" alt="progressing..." title="progressing..." src="~/assets/img/progressbar.gif" />
+        </div>
+    </div>
+    <div class="row  ht450 margin-top-20">
+        <div class="col-md-12">
+            <list-edit-carousel keywords="keywords" istriggered="istriggered" isprogressing="isprogressing" pageno="pageno" pagesize="pagesize" blocksize="blocksize" />
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="/assets/js/common.js"></script>
+    <script type="text/javascript" src="/assets/js/file.js"></script>
+    <script type="text/javascript" src="/assets/js/state.js"></script>
+    <script type="text/javascript" src="/assets/js/suburb.js"></script>
+    <script type="text/javascript" src="/assets/js/gallery.js"></script>
+    <script type="text/javascript" src="/assets/js/carousel.js"></script>
+    <script type="text/javascript">
+        var appModule = angular.module('appModule', ['carouselModule']);
+    </script>
+}
+
+

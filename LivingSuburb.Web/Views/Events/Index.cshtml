@@ -1,0 +1,203 @@
+﻿@{
+    ViewData["Title"] = "Find Events";
+}
+<!--=== Breadcrumbs ===-->
+@if (TempData["categoryId"] == null && TempData["eventTypeId"] == null)
+{
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">Events</h1>
+            <ul class="pull-right breadcrumb"></ul>
+        </div>
+    </div><!--/breadcrumbs-->
+    <div class="container content" ng-controller="eventController">
+        <div class="row">
+            <form class="sky-form no-padding no-margin searchForm" novalidate autocomplete="off" style="border:none;">
+                <div class="col-md-5">
+                    <fieldset class="no-padding">
+                        <section>
+                            <label class="label">Keywords</label>
+                            <label class="input">
+                                <input type="text" ng-model="keywords" name="keywords" ng-keyup="onKeyup()" />
+                            </label>
+                            <div class="list input" ng-show="keywordlist.length > 0">
+                                <ul>
+                                    <li ng-repeat="item in keywordlist">
+                                        <p><a ng-click="onSelected(item)">{{item}}</a></p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset class="no-padding">
+                        <section>
+                            <label class="label">Category</label>
+                            <label class="select">
+                                <select ng-model="category" ng-options="item.name for item in categoryList track by item.id"></select>
+                                <i></i>
+                            </label>
+                        </section>
+                    </fieldset>
+                </div>
+                <div class="col-md-3">
+                    <fieldset class="no-padding">
+                        <section>
+                            <label class="label">Event Type</label>
+                            <label class="select">
+                                <select ng-model="eventType" ng-options="item.name for item in eventTypeList track by item.id"></select>
+                                <i></i>
+                            </label>
+                        </section>
+                    </fieldset>
+                </div>
+                <div class="col-md-1">
+                    <fieldset class="no-padding">
+                        <section>
+                            <label class="label">&nbsp;</label>
+                            <button type="submit" class="btn-u" ng-click="btnClick()">Search</button>
+                        </section>
+                    </fieldset>
+                </div>
+            </form>
+            <div class="col-md-12">
+                <img class="pull-right" ng-show="isprogressing" alt="progressing..." title="progressing..." src="~/assets/img/progressbar.gif" />
+            </div>
+        </div>
+        <div class="row ht450 margin-top-20">
+            <div class="col-md-12">
+                <list-view-event keywords="keywords" category="category" eventtype="eventType" istriggered="istriggered" isprogressing="isprogressing" pageno="pageno" pagesize="pagesize" blocksize="blocksize" />
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    @if (TempData["categoryId"] != null && TempData["eventTypeId"] == null)
+    {
+        <div class="breadcrumbs">
+            <div class="container">
+                <h1 class="pull-left">@Html.Raw(TempData["categoryName"])</h1>
+                <ul class="pull-right breadcrumb">
+                    <li><a href="/Events">Events</a></li>
+                    <li class="active">@Html.Raw(TempData["categoryName"])</li>
+                </ul>
+            </div>
+        </div><!--/breadcrumbs-->
+        <div class="container content" ng-controller="eventL1Controller" ng-init="category={ id: @Html.Raw(TempData["categoryId"]), name: '@Html.Raw(TempData["categoryName"])' }">
+            <div class="row">
+                <form class="sky-form no-padding no-margin searchForm" novalidate autocomplete="off" style="border:none;">
+                    <div class="col-md-8">
+                        <fieldset class="no-padding">
+                            <section>
+                                <label class="label">Keywords</label>
+                                <label class="input">
+                                    <input type="text" ng-model="keywords" name="keywords" ng-keyup="onKeyup()" />
+                                </label>
+                                <div class="list input" ng-show="keywordlist.length > 0">
+                                    <ul>
+                                        <li ng-repeat="item in keywordlist">
+                                            <p><a ng-click="onSelected(item)">{{item}}</a></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </section>
+                        </fieldset>
+                    </div>
+                    <div class="col-md-3">
+                        <fieldset class="no-padding">
+                            <section>
+                                <label class="label">Event Type</label>
+                                <label class="select">
+                                    <select ng-model="eventType" ng-options="item.name for item in eventTypeList track by item.id"></select>
+                                    <i></i>
+                                </label>
+                            </section>
+                        </fieldset>
+                    </div>
+                    <div class="col-md-1">
+                        <fieldset class="no-padding">
+                            <section>
+                                <label class="label">&nbsp;</label>
+                                <button type="submit" class="btn-u" ng-click="btnClick()">Search</button>
+                            </section>
+                        </fieldset>
+                    </div>
+                </form>
+                <div class="col-md-12">
+                    <img class="pull-right" ng-show="isprogressing" alt="progressing..." title="progressing..." src="~/assets/img/progressbar.gif" />
+                </div>
+            </div>
+            <div class="row ht450 margin-top-20">
+                <div class="col-md-12">
+                    <list-view-event keywords="keywords" category="category" eventtype="eventType" istriggered="istriggered" isprogressing="isprogressing" pageno="pageno" pagesize="pagesize" blocksize="blocksize" />
+                </div>
+            </div>
+        </div>
+    }
+    else if (TempData["categoryId"] != null && TempData["eventTypeId"] != null)
+    {
+        <div class="breadcrumbs">
+            <div class="container">
+                <h1 class="pull-left">@Html.Raw(TempData["eventTypeName"])</h1>
+                <ul class="pull-right breadcrumb">
+                    <li><a href="/Events">Events</a></li>
+                    <li><a href="/Events/@Html.Raw(TempData["categoryNameURL"])">@Html.Raw(TempData["categoryName"])</a></li>
+                    <li class="active">@Html.Raw(TempData["eventTypeName"])</li>
+                </ul>
+            </div>
+        </div><!--/breadcrumbs-->
+        <div class="container content" ng-controller="eventL2Controller" ng-init="category={ id: @Html.Raw(TempData["categoryId"]), name: '@Html.Raw(TempData["categoryName"])' };eventType={ id: @Html.Raw(TempData["eventTypeId"]), name: '@Html.Raw(TempData["eventTypeName"])' }">
+            <div class="row">
+                <form class="sky-form no-padding no-margin searchForm" novalidate autocomplete="off" style="border:none;">
+                    <div class="col-md-offset-2 col-md-7">
+                        <fieldset class="no-padding">
+                            <section>
+                                <label class="label">Keywords</label>
+                                <label class="input">
+                                    <input type="text" ng-model="keywords" name="keywords" ng-keyup="onKeyup()" />
+                                </label>
+                                <div class="list input" ng-show="keywordlist.length > 0">
+                                    <ul>
+                                        <li ng-repeat="item in keywordlist">
+                                            <p><a ng-click="onSelected(item)">{{item}}</a></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </section>
+                        </fieldset>
+                    </div>
+                    <div class="col-md-1">
+                        <fieldset class="no-padding">
+                            <section>
+                                <label class="label">&nbsp;</label>
+                                <button type="submit" class="btn-u" ng-click="btnClick()">Search</button>
+                            </section>
+                        </fieldset>
+                    </div>
+                </form>
+                <div class="col-md-12">
+                    <img class="pull-right" ng-show="isprogressing" alt="progressing..." title="progressing..." src="~/assets/img/progressbar.gif" />
+                </div>
+            </div>
+            <div class="row ht450 margin-top-20">
+                <div class="col-md-12">
+                    <list-view-event keywords="keywords" category="category" eventtype="eventType" istriggered="istriggered" isprogressing="isprogressing" pageno="pageno" pagesize="pagesize" blocksize="blocksize" />
+                </div>
+            </div>
+        </div>
+    }
+}
+
+@section Scripts{
+    <script type="text/javascript" src="~/assets/js/tag.js"></script>
+    <script type="text/javascript" src="~/assets/js/country.js"></script>
+    <script type="text/javascript" src="~/assets/js/eventCategory.js"></script>
+    <script type="text/javascript" src="~/assets/js/eventType.js"></script>
+    <script type="text/javascript" src="~/assets/js/event.js"></script>
+    <script type="text/javascript">
+        var appModule = angular.module('appModule', ['eventModule']);
+    </script>
+}
+

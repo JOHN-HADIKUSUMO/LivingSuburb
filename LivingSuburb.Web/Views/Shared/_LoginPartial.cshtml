@@ -1,0 +1,40 @@
+@using System.Security.Claims;
+@using LivingSuburb.Web.Data;
+@if (User.Identity.IsAuthenticated)
+{
+    <text>
+    <div class="topbar">
+        <ul class="loginbar pull-right">
+            <li>
+                @{
+                if (User.Claims.Where(w => w.Type == "Avatar").Any())
+                {
+                    Claim claim = User.Claims.Where(w => w.Type == "Avatar").FirstOrDefault();
+                    <a><img width="30" height="30" src="@Html.Raw(claim.Value)" class="img-circle" /></a>
+                }
+                else
+                {
+                    <a><img width="30" height="30" src="/avatars/default.jpg" class="img-circle" /></a>
+                }
+                }
+            </li>
+            @{ 
+                Claim fullname = User.Claims.Where(w => w.Type == "Fullname").FirstOrDefault();
+            }
+            <li><a title="Manage">@Html.Raw(fullname.Value)</a></li>
+            <li class="topbar-devider"></li>
+            <li><a asp-controller="Account" asp-action="Logout" title="Logout">Logout</a></li>
+        </ul>
+    </div>
+    </text>
+}
+else
+{
+    <div class="topbar">
+        <ul class="loginbar pull-right">
+            <li><a href="/Account/Register">Register</a></li>
+            <li class="topbar-devider"></li>
+            <li><a href="/Account/Login">Login</a></li>
+        </ul>
+    </div>
+}

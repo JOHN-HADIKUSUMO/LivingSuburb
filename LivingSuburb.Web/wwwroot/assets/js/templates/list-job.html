@@ -1,0 +1,66 @@
+﻿<div class="row" ng-show="jobs.length > 0">
+    <div class="col-md-12 text-center">
+        <ul class="pagination">
+            <li ng-show="data.first!=null">
+                <a ng-click="firstClick()">First</a>
+            </li>
+            <li ng-show="data.prev!=null">
+                <a ng-click="prevClick()">Prev</a>
+            </li>
+            <li ng-repeat="item in data.pages" ng-class="{active:data.selectedPageNo==item}">
+                <a ng-click="navClick($index,item)">{{item}}</a>
+            </li>
+            <li ng-show="data.next!=null">
+                <a ng-click="nextClick()">Next</a>
+            </li>
+            <li ng-show="data.last!=null">
+                <a ng-click="lastClick()">Last</a>
+            </li>
+        </ul>
+    </div>
+    <div ng-repeat="item in jobs" class="col-md-12 text-center">
+        <div class="row">
+            <div class="col-md-10 text-left">
+                <h2><a ng-href="/Jobs/Detail/{{item.id}}/{{item.titleURL}}" target="_blank"><span>{{item.title}} - </span> <span ng-if="item.suburb!=''">{{item.suburb}}, </span><span>{{item.state}}</span></a></h2>
+            </div>
+            <div class="col-md-2 text-right">
+                {{item.strPublishingDate}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-left">
+                <h3>{{item.company}}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-left">
+                {{item.description}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <hr />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 text-center">
+        <ul class="pagination">
+            <li ng-show="data.first!=null">
+                <a ng-click="firstClick()">First</a>
+            </li>
+            <li ng-show="data.prev!=null">
+                <a ng-click="prevClick()">Prev</a>
+            </li>
+            <li ng-repeat="item in data.pages" ng-class="{active:data.selectedPageNo==item}">
+                <a ng-click="navClick($index,item)">{{item}}</a>
+            </li>
+            <li ng-show="data.next!=null">
+                <a ng-click="nextClick()">Next</a>
+            </li>
+            <li ng-show="data.last!=null">
+                <a ng-click="lastClick()">Last</a>
+            </li>
+        </ul>
+    </div>
+</div>
+

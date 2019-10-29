@@ -1,0 +1,83 @@
+﻿@model LivingSuburb.Models.Account.InputAfterPostModel
+@{
+    ViewData["Title"] = "Login";
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Login</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active">Login</li>
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+<div class="row">
+    <div class="col-md-offset-2 col-md-4 ht450">
+        <section>
+            <form asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl" class="sky-form mrt50 mrb20" method="post">
+                <header class="text-center">Use a local account to log in</header>
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <fieldset>
+                    <section>
+                        <label class="label" asp-for="Email"></label>
+                        <label class="input">
+                            <input asp-for="Email" />
+                        </label>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </section>
+                    <section>
+                        <label class="label" asp-for="Password"></label>
+                        <label class="input">
+                            <input asp-for="Password" />
+                        </label>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </section>
+                    <section>
+                        <label class="checkbox" asp-for="RememberMe">
+                            <input asp-for="RememberMe" />
+                            <i></i>@Html.DisplayNameFor(m => m.RememberMe)
+                        </label>
+                    </section>
+                    <section class="text-right">
+                        <button type="submit" class="btn-u">Log in</button>
+                    </section>
+                    <section>
+                        <p>
+                            <a asp-controller="Account" asp-action="ForgotPassword">Forgot your password?</a>
+                        </p>
+                        <p>
+                            <a asp-controller="Account" asp-action="Register" asp-route-returnUrl="@Html.Raw(Model.ReturnUrl)">Register as a new user</a>
+                        </p>
+                    </section>
+                </fieldset>
+            </form>
+        </section>
+    </div>
+    <div class="col-md-5">
+        <section>
+            <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" class="sky-form mrt50 mrb20" method="post">
+                <header class="text-center">Use another service to log in.</header>
+                <fieldset>
+                    <section>
+                        @foreach (var provider in Model.ExternalLogins)
+                        {
+                            <button type="submit" class="btn btn-default" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                        }
+                    </section>
+                    <section>
+                        <small>
+                            By using one of these external authentication, your account will be created if you haven't registered before or will be connected to your existing account automatically.
+                        </small>
+                    </section>
+                </fieldset>
+            </form>
+        </section>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script type="text/javascript">
+        var appModule = angular.module('appModule', []);
+    </script>
+}
+

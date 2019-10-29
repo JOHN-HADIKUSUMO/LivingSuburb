@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Event\EventSubCategory.cs" />
+    <Compile Remove="Forex\AUD2CAD.cs" />
+    <Compile Remove="Forex\AUD2CNY.cs" />
+    <Compile Remove="Forex\AUD2EUR.cs" />
+    <Compile Remove="Forex\AUD2GBP.cs" />
+    <Compile Remove="Forex\AUD2IDR.cs" />
+    <Compile Remove="Forex\AUD2JPY.cs" />
+    <Compile Remove="Forex\AUD2MYR.cs" />
+    <Compile Remove="Forex\AUD2NZD.cs" />
+    <Compile Remove="Forex\AUD2SGD.cs" />
+    <Compile Remove="Forex\AUD2USD - Copy.cs" />
+    <Compile Remove="Forex\AUD2USD.cs" />
+    <Compile Remove="Forex\Currency.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.8.14" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bin\Debug\netcoreapp2.2\" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="XCOPY $(TargetPath) $(SolutionDir)Assemblies /Y" />
+  </Target>
+
+</Project>

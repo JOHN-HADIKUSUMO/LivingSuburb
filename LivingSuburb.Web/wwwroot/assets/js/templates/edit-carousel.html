@@ -1,0 +1,52 @@
+﻿<form name="editCarouselForm" autocomplete="off" novalidate class="searchForm sky-form mrt50 mrb20">
+    <header class="text-center">Edit Carousel No. {{id}}</header>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <fieldset>
+        <section class="text-center">
+            <img ng-src="{{url}}" class="img-responsive" style="margin-left:auto;margin-right:auto;" />
+            <input type="file" class="hidden" upload-files required />
+        </section>
+        <section class="text-right">
+            <button type="submit" class="btn-u" ng-click="uploadClick()">Upload</button>
+        </section>
+        <section>
+            <label class="label">Location</label>
+            <label class="input">
+                <input type="text" ng-model="location" name="location" required />
+            </label>
+            <span ng-show="location.length == null && editCarouselForm.location.$error.required && editCarouselForm.location.$touched" class="text-danger">Location is required.</span>
+        </section>
+        <section>
+            <label class="label">Proverb</label>
+            <label class="input">
+                <input type="text" ng-model="proverb" name="proverb" required />
+            </label>
+            <span ng-show="proverb.length == null && editCarouselForm.proverb.$error.required && editCarouselForm.proverb.$touched" class="text-danger">Proverb is required.</span>
+        </section>
+        <section>
+            <label class="label">Source</label>
+            <label class="input">
+                <input type="text" ng-model="source" name="source" required />
+            </label>
+            <span ng-show="source.length == null && editCarouselForm.source.$error.required && editCarouselForm.source.$touched" class="text-danger">Source is required.</span>
+        </section>
+        <section>
+            <label class="label">Publishing Date</label>
+            <label class="input">
+                <input type="text" id="publishedDate" ng-model="publishedDate" name="publishedDate" required />
+            </label>
+            <span ng-show="publishedDate.length == null && editCarouselForm.publishedDate.$error.required && editCarouselForm.publishedDate.$touched" class="text-danger">Publishing date is required.</span>
+        </section>
+    </fieldset>
+    <footer class="text-right">
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <img ng-show="isprogressing" class="float-right margin-bottom-10" src="/assets/img/progressbar.gif" />
+            </div>
+            <div class="col-md-12 text-right">
+                <button type="submit" class="btn-u" ng-click="backClick()">Back</button>
+                <button type="submit" ng-class="{'btn-u':editCarouselForm.$valid,'btn-u-disabled':editCarouselForm.$invalid}" ng-click="updateClick()" ng-disabled="editCarouselForm.$invalid">Update</button>
+            </div>
+        </div>
+    </footer>
+</form>

@@ -1,0 +1,45 @@
+﻿<div class="row" ng-show="suburbs.length > 0">
+    <div class="col-md-12 text-center">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Name on URL</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in suburbs">
+                    <td align="left">{{item.suburbId}}</td>
+                    <td align="left">{{item.name}}</td>
+                    <td align="left">{{item.nameURL}}</td>
+                    <td align="right">
+                        <button class="btn-u" ng-click="editClick(item.suburbId)">Edit</button>
+                        <button class="btn-u" ng-click="deleteClick(item)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-12 text-center">
+        <ul class="pagination">
+            <li ng-show="data.first!=null">
+                <a ng-click="firstClick()">First</a>
+            </li>
+            <li ng-show="data.prev!=null">
+                <a ng-click="prevClick()">Prev</a>
+            </li>
+            <li ng-repeat="item in data.pages" ng-class="{active:data.selectedPageNo==item}">
+                <a ng-click="navClick($index,item)">{{item}}</a>
+            </li>
+            <li ng-show="data.next!=null">
+                <a ng-click="nextClick()">Next</a>
+            </li>
+            <li ng-show="data.last!=null">
+                <a ng-click="lastClick(data.last)">Last</a>
+            </li>
+        </ul>
+    </div>
+</div>
+        

@@ -1,0 +1,72 @@
+@using LivingSuburb.Models
+@using LivingSuburb.Services
+@using Microsoft.Extensions.Caching.Memory;
+@inject IMemoryCache cache
+@inject CarouselService Service
+@{
+    List<Carousel> list = cache.GetOrCreate("Caurousel", entry =>
+    {
+        entry.SlidingExpiration = TimeSpan.FromMinutes(15);
+        return Service.ReadAll();
+    });
+    <div class="tp-banner-container">
+        <div class="tp-banner">
+            <ul>
+                @for (int i = 0; i < list.Count; i++)
+                {
+                    <!-- SLIDE -->
+                <li class="revolution-mch-1" data-transition="fade" data-slotamount="5" data-masterspeed="1000" data-title="@Html.Raw(list[i].Location)">
+                    <!-- MAIN IMAGE -->
+                    <img src="@Html.Raw(list[i].ImageURL)" alt="darkblurbg" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                    @if (!string.IsNullOrEmpty(list[i].Location) && !string.IsNullOrEmpty(list[i].Location))
+                    {
+                        <div class="tp-caption revolution-ch1 sft start"
+                             data-x="left"
+                             data-hoffset="0"
+                             data-y="0"
+                             data-speed="1500"
+                             data-start="500"
+                             data-easing="Back.easeInOut"
+                             data-endeasing="Power1.easeIn"
+                             data-endspeed="300">
+                            @Html.Raw(list[i].Location)
+                        </div>
+                        <!-- LAYER -->
+                        <div class="tp-caption revolution-ch2 sft"
+                             data-x="right"
+                             data-hoffset="0"
+                             data-y="440"
+                             data-speed="1400"
+                             data-start="2000"
+                             data-easing="Power4.easeOut"
+                             data-endspeed="300"
+                             data-endeasing="Power1.easeIn"
+                             data-captionhidden="off"
+                             style="z-index: 6">
+                             "@Html.Raw(list[i].Proverb)"
+                        </div>
+                        <!-- LAYER -->
+                        <div class="tp-caption revolution-ch3 sft"
+                             data-x="right"
+                             data-hoffset="0"
+                             data-y="460"
+                             data-speed="1400"
+                             data-start="2000"
+                             data-easing="Power4.easeOut"
+                             data-endspeed="300"
+                             data-endeasing="Power1.easeIn"
+                             data-captionhidden="off"
+                             style="z-index: 6">
+                             - @Html.Raw(list[i].Source)
+                        </div>
+                    }
+                    <!-- LAYER -->
+                </li>
+                }
+            </ul>
+            <div class="tp-bannertimer tp-bottom"></div>
+        </div>
+    </div>
+    <!--=== End Slider ===-->
+
+}

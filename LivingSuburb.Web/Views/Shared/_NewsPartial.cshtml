@@ -1,0 +1,147 @@
+@using System;
+@using LivingSuburb.Models;
+@using LivingSuburb.Services
+@using Microsoft.Extensions.Caching.Memory;
+@using Microsoft.Extensions.Configuration;
+@inject IMemoryCache cache
+@inject NewsService Service
+@inject IConfiguration Configuration
+@{
+    const int minutes = 15;
+    string apiKey = System.Convert.ToString(Configuration["NewsAPI:ApiKey"]);
+    string url = System.Convert.ToString(Configuration["NewsAPI:Url"]);
+
+    List<News> technology = cache.GetOrCreate("NewsAPI_Technology", entry =>
+    {
+        Task<List<News>> tempTechnology = Service.Read(CountriesEnum.Australia.ToString(), Category.Technology.ToString(), 10);
+        entry.SlidingExpiration = TimeSpan.FromMinutes(minutes);
+        return tempTechnology.Result;
+    });
+
+    List<News> sport = cache.GetOrCreate("NewsAPI_Sport", entry =>
+    {
+        Task<List<News>> tempSport = Service.Read(CountriesEnum.Australia.ToString(), Category.Sport.ToString(), 10);
+        entry.SlidingExpiration = TimeSpan.FromMinutes(minutes);
+        return tempSport.Result;
+    });
+
+    List<News> politic = cache.GetOrCreate("NewsAPI_Politics", entry =>
+    {
+        Task<List<News>> tempPolitic = Service.Read(CountriesEnum.Australia.ToString(), Category.Politics.ToString(), 10);
+        entry.SlidingExpiration = TimeSpan.FromMinutes(minutes);
+        return tempPolitic.Result;
+    });
+
+    List<News> entertainment = cache.GetOrCreate("NewsAPI_Entertainment", entry =>
+    {
+        Task<List<News>> tempEntertainment = Service.Read(CountriesEnum.Australia.ToString(), Category.Entertainment.ToString(), 10);
+        entry.SlidingExpiration = TimeSpan.FromMinutes(minutes);
+        return tempEntertainment.Result;
+    });
+
+    List<News> health = cache.GetOrCreate("NewsAPI_Health", entry =>
+    {
+        Task<List<News>> tempHealth = Service.Read(CountriesEnum.Australia.ToString(), Category.Health.ToString(),10);
+        entry.SlidingExpiration = TimeSpan.FromMinutes(minutes);
+        return tempHealth.Result;
+    });
+
+    List<News> science = cache.GetOrCreate("NewsAPI_Science", entry =>
+    {
+        Task<List<News>> tempScience = Service.Read(CountriesEnum.Australia.ToString(), Category.Science.ToString(),10);
+        entry.SlidingExpiration = TimeSpan.FromMinutes(minutes);
+        return tempScience.Result;
+    });
+
+    <div class="headline"><h2>Today's News</h2></div>
+    <div class="row news">
+        <div class="col-md-6">
+            <div class="full-width text-center margin-bottom-10"><h3>Technology</h3></div>
+            @if (technology != null)
+            {
+                @for (int i = 0; i < technology.Count; i++)
+                {
+                    if (i >= 5)
+                    {
+                        break;
+                    }
+                    <a href="@Html.Raw(technology[i].NewsURL)" target="_blank">@Html.Raw(technology[i].NewsTitle) - <small><i>@Html.Raw(technology[i].NewsSource.ToLower())</i></small></a>
+                }
+            }
+        </div>
+        <div class="col-md-6">
+            <div class="full-width text-center margin-bottom-10"><h3>Sport</h3></div>
+            @if (sport != null)
+            {
+                @for (int i = 0; i < sport.Count; i++)
+                {
+                    if (i >= 5)
+                    {
+                        break;
+                    }
+                    <a href="@Html.Raw(sport[i].NewsURL)" target="_blank">@Html.Raw(sport[i].NewsTitle) - <small><i>@Html.Raw(sport[i].NewsSource.ToLower())</i></small></a>
+                }
+            }
+        </div>
+    </div>
+    <div class="row news">
+        <div class="col-md-6">
+            <div class="full-width text-center margin-bottom-10"><h3>Politic</h3></div>
+            @if (politic != null)
+            {
+                @for (int i = 0; i < politic.Count; i++)
+                {
+                    if (i >= 5)
+                    {
+                        break;
+                    }
+                    <a href="@Html.Raw(politic[i].NewsURL)" target="_blank">@Html.Raw(politic[i].NewsTitle) - <small><i>@Html.Raw(politic[i].NewsSource.ToLower())</i></small></a>
+                }
+            }
+        </div>
+        <div class="col-md-6">
+            <div class="full-width text-center margin-bottom-10"><h3>Entertainment</h3></div>
+            @if (entertainment != null)
+            {
+                @for (int i = 0; i < entertainment.Count; i++)
+                {
+                    if (i >= 5)
+                    {
+                        break;
+                    }
+                    <a href="@Html.Raw(entertainment[i].NewsURL)" target="_blank">@Html.Raw(entertainment[i].NewsTitle) - <small><i>@Html.Raw(entertainment[i].NewsSource.ToLower())</i></small></a>
+                }
+            }
+        </div>
+    </div>
+    <div class="row news">
+        <div class="col-md-6">
+            <div class="full-width text-center margin-bottom-10"><h3>Health</h3></div>
+            @if (health != null)
+            {
+                @for (int i = 0; i < health.Count; i++)
+                {
+                    if (i >= 5)
+                    {
+                        break;
+                    }
+                    <a href="@Html.Raw(health[i].NewsURL)" target="_blank">@Html.Raw(health[i].NewsTitle) - <small><i>@Html.Raw(health[i].NewsSource.ToLower())</i></small></a>
+                }
+            }
+        </div>
+        <div class="col-md-6">
+            <div class="full-width text-center margin-bottom-10"><h3>Science</h3></div>
+            @if (science != null)
+            {
+                @for (int i = 0; i < science.Count; i++)
+                {
+                    if (i >= 5)
+                    {
+                        break;
+                    }
+                    <a href="@Html.Raw(science[i].NewsURL)" target="_blank">@Html.Raw(science[i].NewsTitle) - <small><i>@Html.Raw(science[i].NewsSource.ToLower())</i></small></a>
+                }
+            }
+        </div>
+    </div>
+}

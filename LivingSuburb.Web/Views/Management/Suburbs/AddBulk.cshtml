@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Management | Suburbs | Add Bulk";
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Add Bulk</h1>
+        <ul class="pull-right breadcrumb">
+            <li>Management</li>
+            <li><a href="/Management/Suburbs">Suburbs</a></li>
+            <li class="active">Add Bulk</li>
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+<div class="row">
+    <div class="col-md-offset-4 col-md-4 ht450">
+        <add-bulk-suburb />
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="/assets/js/common.js"></script>
+    <script type="text/javascript" src="/assets/js/state.js"></script>
+    <script type="text/javascript" src="/assets/js/suburb.js"></script>
+    <script type="text/javascript">
+        var appModule = angular.module('appModule', ['suburbModule']);
+    </script>
+}
+
+

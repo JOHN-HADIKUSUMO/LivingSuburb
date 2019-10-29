@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Management | Countries | Edit";
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Edit</h1>
+        <ul class="pull-right breadcrumb">
+            <li>Management</li>
+            <li><a href="/Management/Countries">Countries</a></li>
+            <li class="active">Edit</li>
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+<div class="row">
+    <div class="col-md-offset-3 col-md-6 ht450">
+        <edit-country id="@Html.Raw(TempData["Id"].ToString())" />
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/assets/js/country.js"></script>
+    <script type="text/javascript">
+        var appModule = angular.module('appModule', ['countryModule']);
+    </script>x
+}

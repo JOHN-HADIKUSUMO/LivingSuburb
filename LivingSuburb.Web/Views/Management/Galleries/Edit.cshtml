@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Management | Galleries | Edit";
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Edit</h1>
+        <ul class="pull-right breadcrumb">
+            <li>Management</li>
+            <li><a href="/Management/Galleries">Galleries</a></li>
+            <li class="active">Edit</li>
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+<div class="container content" ng-controller="editController">
+    <div class="col-md-offset-3 col-md-6 ht450">
+        <form name="galleriesForm" autocomplete="off" novalidate class="searchForm sky-form mrt50 mrb20">
+            <fieldset>
+                <section class="text-center">
+                    <img ng-src="{{url}}" class="img-responsive" style="margin-left:auto;margin-right:auto;" />
+                    <input type="file" class="hidden" upload-files ng-model="avatarfile" name="avatarfile" required />
+                    <input type="hidden" ng-model="id" id="id" name="id" value="@Html.Raw(TempData["Id"])" />
+                </section>
+                <section>
+                    <label class="label">Suburb</label>
+                    <label class="input">
+                        <input type="text" ng-model="suburb" name="suburb" ng-keyup="onKeyup()" />
+                    </label>
+                    <div class="list input" ng-show="suburbList.length > 0" ng-mouseenter="onMouseEnter(e)" ng-mouseleave="onMouseLeave()">
+                        <ul>
+                            <li ng-repeat="item in suburbList">
+                                <p><a ng-click="onSelected(item)">{{item}}</a></p>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <label class="label">State</label>
+                    <label class="select">
+                        <select ng-model="state" name="state" ng-options="item.name for item in stateList track by item.id" required></select>
+                        <i></i>
+                    </label>
+                    <span ng-show="state.id == 0 && galleriesForm.state.$touched" class="text-danger">State is required.</span>
+                </section>
+                <section>
+                    <label class="label">Note</label>
+                    <label class="input">
+                        <textarea ng-model="note" class="form-control" rows="8" name="note"></textarea>
+                    </label>
+                </section>
+                <div class="text-right" ng-show="isprogressing">
+                    <img src="/assets/img/progressbar.gif" class="fa-align-right" alt="progressing" title="progressing" />
+                </div>
+            </fieldset>
+            <footer class="text-right">
+                <button type="submit" class="btn-u" ng-click="uploadClick()">Upload</button>
+                <button type="submit" ng-class="isChanged?'btn-u':'btn-u-disabled'" ng-disabled="!isChanged" ng-click="updateClick()">Update</button>
+            </footer>
+        </form>
+        <p class="text-right"><small><i><b>Only 1425 x 800 pixels image (jpg, jpeg, png or gif format) is allowed.</b></i></small></p>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript" src="/assets/js/common.js"></script>
+    <script type="text/javascript" src="/assets/js/state.js"></script>
+    <script type="text/javascript" src="/assets/js/suburb.js"></script>
+    <script type="text/javascript" src="/assets/js/file.js"></script>
+    <script type="text/javascript" src="/assets/js/gallery.js"></script>
+    <script type="text/javascript">
+        var appModule = angular.module('appModule', ['galleriesModule']);
+    </script>
+}

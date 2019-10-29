@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Avatar";
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Avatar</h1>
+    </div>
+</div>
+<div class="container content" ng-controller="avatarController">
+    <div class="col-md-offset-3 col-md-6 ht450">
+        <form name="avatarForm" autocomplete="off" novalidate class="searchForm sky-form mrt50 mrb20">
+            <fieldset>
+                <section class="text-center">
+                    <img ng-src="{{url}}" class="img-responsive" style="margin-left:auto;margin-right:auto;" />
+                    <input type="file" class="hidden" upload-files ng-model="avatarfile" name="avatarfile" required />
+                </section>
+                <div class="text-right" ng-show="isprogressing" >
+                    <img src="/assets/img/progressbar.gif" class="fa-align-right" alt="progressing" title="progressing" />
+                </div>
+            </fieldset>
+            <footer class="text-right">                
+                <button type="submit" class="btn-u" ng-click="uploadClick()">Upload</button>
+                <button type="submit" ng-class="isChanged?'btn-u':'btn-u-disabled'" ng-disabled="!isChanged" ng-click="saveClick()">Save</button>
+            </footer>
+        </form>
+        <p class="text-right"><small><i><b>Only 400 x 400 pixels image (jpg, jpeg, png or gif format) is allowed.</b></i></small></p>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript" src="~/assets/js/file.js"></script>
+    <script type="text/javascript" src="~/assets/js/avatar.js"></script>
+    <script type="text/javascript">
+        var appModule = angular.module('appModule', ['avatarModule']);
+    </script>
+}

@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Email Verification";
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Email Verification</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="/Register">Register</a></li>
+            <li class="active">Email Verification</li>
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+<div class="row">
+    <div class="col-md-12 text-center ht450">
+        <section>
+            <h4>@Html.Raw(TempData["Result"].ToString())</h4>
+        </section>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script type="text/javascript">
+        var appModule = angular.module('appModule', []);
+    </script>
+}
+

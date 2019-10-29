@@ -1,0 +1,133 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Migrations\20181012111622_Init.cs" />
+    <Compile Remove="Migrations\20181012111622_Init.Designer.cs" />
+    <Compile Remove="Migrations\20181012114751_X.cs" />
+    <Compile Remove="Migrations\20181012114751_X.Designer.cs" />
+    <Compile Remove="Migrations\20181012115218_2018-10-12 -X.cs" />
+    <Compile Remove="Migrations\20181012115218_2018-10-12 -X.Designer.cs" />
+    <Compile Remove="Migrations\20181012115715_2018-10-12 -XX.cs" />
+    <Compile Remove="Migrations\20181012115715_2018-10-12 -XX.Designer.cs" />
+    <Compile Remove="Migrations\20181012120207_2018-10-12 -XXX.cs" />
+    <Compile Remove="Migrations\20181012120207_2018-10-12 -XXX.Designer.cs" />
+    <Compile Remove="Migrations\20181015032425_corousel entity.cs" />
+    <Compile Remove="Migrations\20181015032425_corousel entity.Designer.cs" />
+    <Compile Remove="Migrations\20181015032615_corousel.cs" />
+    <Compile Remove="Migrations\20181015032615_corousel.Designer.cs" />
+    <Compile Remove="Migrations\20181015033138_corousel X.cs" />
+    <Compile Remove="Migrations\20181015033138_corousel X.Designer.cs" />
+    <Compile Remove="Migrations\20181015042309_corousel XX.cs" />
+    <Compile Remove="Migrations\20181015042309_corousel XX.Designer.cs" />
+    <Compile Remove="Migrations\20181017013832_OurMission.cs" />
+    <Compile Remove="Migrations\20181017013832_OurMission.Designer.cs" />
+    <Compile Remove="Migrations\20181017014050_OurMission X.cs" />
+    <Compile Remove="Migrations\20181017014050_OurMission X.Designer.cs" />
+    <Compile Remove="Migrations\20181026060427_2018-10-26.cs" />
+    <Compile Remove="Migrations\20181026060427_2018-10-26.Designer.cs" />
+    <Compile Remove="Migrations\20181028234327_add postcode.cs" />
+    <Compile Remove="Migrations\20181028234327_add postcode.Designer.cs" />
+    <Compile Remove="Migrations\20181028234808_add stateid.cs" />
+    <Compile Remove="Migrations\20181028234808_add stateid.Designer.cs" />
+    <Compile Remove="Migrations\20181103120301_Job Category and Sub Category.cs" />
+    <Compile Remove="Migrations\20181103120301_Job Category and Sub Category.Designer.cs" />
+    <Compile Remove="Migrations\20181106040053_tag table.cs" />
+    <Compile Remove="Migrations\20181106040053_tag table.Designer.cs" />
+    <Compile Remove="Migrations\20181106040338_tag table X.cs" />
+    <Compile Remove="Migrations\20181106040338_tag table X.Designer.cs" />
+    <Compile Remove="Migrations\20181106040718_taggroup table .cs" />
+    <Compile Remove="Migrations\20181106040718_taggroup table .Designer.cs" />
+    <Compile Remove="Migrations\20181106041307_taggroup table x.cs" />
+    <Compile Remove="Migrations\20181106041307_taggroup table x.Designer.cs" />
+    <Compile Remove="Migrations\20181219111411_2018-12-19.cs" />
+    <Compile Remove="Migrations\20181219111411_2018-12-19.Designer.cs" />
+    <Compile Remove="Migrations\20181219111902_2018-12-19 X.cs" />
+    <Compile Remove="Migrations\20181219111902_2018-12-19 X.Designer.cs" />
+    <Compile Remove="Migrations\20181219112634_2018-12-19 XX.cs" />
+    <Compile Remove="Migrations\20181219112634_2018-12-19 XX.Designer.cs" />
+    <Compile Remove="Migrations\20181219113014_2018-12-19 XXX.cs" />
+    <Compile Remove="Migrations\20181219113014_2018-12-19 XXX.Designer.cs" />
+    <Compile Remove="Migrations\20181219201325_2018-12-20.cs" />
+    <Compile Remove="Migrations\20181219201325_2018-12-20.Designer.cs" />
+    <Compile Remove="Migrations\20181219201622_2018-12-20-X.cs" />
+    <Compile Remove="Migrations\20181219201622_2018-12-20-X.Designer.cs" />
+    <Compile Remove="Migrations\20181219202042_2018-12-20-XX.cs" />
+    <Compile Remove="Migrations\20181219202042_2018-12-20-XX.Designer.cs" />
+    <Compile Remove="Migrations\20181219202524_2018-12-20-XXX.cs" />
+    <Compile Remove="Migrations\20181219202524_2018-12-20-XXX.Designer.cs" />
+    <Compile Remove="Migrations\20181219202842_2018-12-20-XXXX.cs" />
+    <Compile Remove="Migrations\20181219202842_2018-12-20-XXXX.Designer.cs" />
+    <Compile Remove="Migrations\20181219203112_2018-12-20-XXXXX.cs" />
+    <Compile Remove="Migrations\20181219203112_2018-12-20-XXXXX.Designer.cs" />
+    <Compile Remove="Migrations\20181219203957_2018-12-20-XXXXXXX.cs" />
+    <Compile Remove="Migrations\20181219203957_2018-12-20-XXXXXXX.Designer.cs" />
+    <Compile Remove="Migrations\20181219204128_2018-12-20-XXXXXXXX.cs" />
+    <Compile Remove="Migrations\20181219204128_2018-12-20-XXXXXXXX.Designer.cs" />
+    <Compile Remove="Migrations\20181219204316_2018-12-20-XXXXXXXXX.cs" />
+    <Compile Remove="Migrations\20181219204316_2018-12-20-XXXXXXXXX.Designer.cs" />
+    <Compile Remove="Migrations\20181219204442_2018-12-20-Y.cs" />
+    <Compile Remove="Migrations\20181219204442_2018-12-20-Y.Designer.cs" />
+    <Compile Remove="Migrations\20181219204613_2018-12-20-YY.cs" />
+    <Compile Remove="Migrations\20181219204613_2018-12-20-YY.Designer.cs" />
+    <Compile Remove="Migrations\20181219204832_2018-12-20-YYY.cs" />
+    <Compile Remove="Migrations\20181219204832_2018-12-20-YYY.Designer.cs" />
+    <Compile Remove="Migrations\20181219205541_2018-12-20-YYYY.cs" />
+    <Compile Remove="Migrations\20181219205541_2018-12-20-YYYY.Designer.cs" />
+    <Compile Remove="Migrations\20181219205743_2018-12-20-YYYYY.cs" />
+    <Compile Remove="Migrations\20181219205743_2018-12-20-YYYYY.Designer.cs" />
+    <Compile Remove="Migrations\20181219205911_2018-12-20-YYYYYY.cs" />
+    <Compile Remove="Migrations\20181219205911_2018-12-20-YYYYYY.Designer.cs" />
+    <Compile Remove="Migrations\20181219210133_2018-12-20-YYYYYYY.cs" />
+    <Compile Remove="Migrations\20181219210133_2018-12-20-YYYYYYY.Designer.cs" />
+    <Compile Remove="Migrations\20181219210826_2018-12-20-AAA.cs" />
+    <Compile Remove="Migrations\20181219210826_2018-12-20-AAA.Designer.cs" />
+    <Compile Remove="Migrations\20181220021716_2018-12-20-BBBB.cs" />
+    <Compile Remove="Migrations\20181220021716_2018-12-20-BBBB.Designer.cs" />
+    <Compile Remove="Migrations\20181220022025_2018-12-20-BBBBBB.cs" />
+    <Compile Remove="Migrations\20181220022025_2018-12-20-BBBBBB.Designer.cs" />
+    <Compile Remove="Migrations\20181221025803_2018-12-21 A.cs" />
+    <Compile Remove="Migrations\20181221025803_2018-12-21 A.Designer.cs" />
+    <Compile Remove="Migrations\20181221044751_2018-12-21 AA.cs" />
+    <Compile Remove="Migrations\20181221044751_2018-12-21 AA.Designer.cs" />
+    <Compile Remove="Migrations\20181221045442_2018-12-21 AAA.cs" />
+    <Compile Remove="Migrations\20181221045442_2018-12-21 AAA.Designer.cs" />
+    <Compile Remove="Migrations\20181225043150_2018-12-25 AA.cs" />
+    <Compile Remove="Migrations\20181225043150_2018-12-25 AA.Designer.cs" />
+    <Compile Remove="Migrations\20181226010337_2018-12-26 A.cs" />
+    <Compile Remove="Migrations\20181226010337_2018-12-26 A.Designer.cs" />
+    <Compile Remove="Migrations\20181226010525_2018-12-26 AA.cs" />
+    <Compile Remove="Migrations\20181226010525_2018-12-26 AA.Designer.cs" />
+    <Compile Remove="Migrations\20190101032834_2019-01-01 A.cs" />
+    <Compile Remove="Migrations\20190101032834_2019-01-01 A.Designer.cs" />
+    <Compile Remove="Migrations\20190103002202_2019-01-03 A.cs" />
+    <Compile Remove="Migrations\20190103002202_2019-01-03 A.Designer.cs" />
+    <Compile Remove="Migrations\20190113050537_2019-01-13.cs" />
+    <Compile Remove="Migrations\20190113050537_2019-01-13.Designer.cs" />
+    <Compile Remove="Migrations\20190115075027_2019-01-15.cs" />
+    <Compile Remove="Migrations\20190115075027_2019-01-15.Designer.cs" />
+    <Compile Remove="Migrations\20190115075327_2019-01-15 X.cs" />
+    <Compile Remove="Migrations\20190115075327_2019-01-15 X.Designer.cs" />
+    <Compile Remove="Migrations\20190124091528_xx.cs" />
+    <Compile Remove="Migrations\20190124091528_xx.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.8.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.1" />
+    <PackageReference Include="NUnit" Version="3.11.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\netcoreapp2.2\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="LivingSuburb.Models">
+      <HintPath>..\Assemblies\LivingSuburb.Models.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="XCOPY $(TargetPath) $(SolutionDir)Assemblies /Y" />
+  </Target>
+</Project>

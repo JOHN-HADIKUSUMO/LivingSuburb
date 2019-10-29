@@ -1,0 +1,266 @@
+@using System
+@using LivingSuburb.Models
+@using LivingSuburb.Services
+@using Microsoft.Extensions.Caching.Memory
+@using Microsoft.Extensions.Configuration
+@inject IMemoryCache cache
+@inject WeatherService Service
+@inject IConfiguration Configuration
+@{
+    const int minutes = 15;
+    const string degree = "\x00B0";
+
+    DateTime updateTime = cache.GetOrCreate("Weather_Update", entry =>
+    {
+        updateTime = DateTime.Now;
+        entry.SlidingExpiration = TimeSpan.FromMinutes(minutes);
+        return updateTime;
+    });
+
+    OpenWeather sydney = cache.GetOrCreate("Weather_Sydney", entry =>
+    {
+        Task<OpenWeather> temp = Service.Read(City.Sydney.ToString());
+        entry.SlidingExpiration = TimeSpan.FromMinutes(minutes);
+        return temp.Result;
+    });
+
+    OpenWeather melbourne = cache.GetOrCreate("Weather_Melbourne", entry =>
+    {
+        Task<OpenWeather> temp = Service.Read(City.Melbourne.ToString());
+        entry.SlidingExpiration = TimeSpan.FromMinutes(minutes);
+        return temp.Result;
+    });
+
+    OpenWeather brisbane = cache.GetOrCreate("Weather_Brisbane", entry =>
+    {
+        Task<OpenWeather> temp = Service.Read(City.Brisbane.ToString());
+        entry.SlidingExpiration = TimeSpan.FromMinutes(minutes);
+        return temp.Result;
+    });
+
+    OpenWeather canberra = cache.GetOrCreate("Weather_Canberra", entry =>
+    {
+        Task<OpenWeather> temp = Service.Read(City.Canberra.ToString());
+        entry.SlidingExpiration = TimeSpan.FromMinutes(minutes);
+        return temp.Result;
+    });
+
+    OpenWeather adelaide = cache.GetOrCreate("Weather_Adelaide", entry =>
+    {
+        Task<OpenWeather> temp = Service.Read(City.Adelaide.ToString());
+        entry.SlidingExpiration = TimeSpan.FromMinutes(minutes);
+        return temp.Result;
+    });
+
+    OpenWeather perth = cache.GetOrCreate("Weather_Perth", entry =>
+    {
+        Task<OpenWeather> temp = Service.Read(City.Perth.ToString());
+        entry.SlidingExpiration = TimeSpan.FromMinutes(minutes);
+        return temp.Result;
+    });
+
+    OpenWeather darwin = cache.GetOrCreate("Weather_Darwin", entry =>
+    {
+        Task<OpenWeather> temp = Service.Read(City.Darwin.ToString());
+        entry.SlidingExpiration = TimeSpan.FromMinutes(minutes);
+        return temp.Result;
+    });
+
+    OpenWeather hobart = cache.GetOrCreate("Weather_Hobart", entry =>
+    {
+        Task<OpenWeather> temp = Service.Read(City.Hobart.ToString());
+        entry.SlidingExpiration = TimeSpan.FromMinutes(minutes);
+        return temp.Result;
+    });
+
+    <div class="headline"><h2>Today's Weather</h2></div>
+    <div class="row weather">
+        <div class="col-md-12">
+            <div>
+                <h4>Sydney</h4>
+            </div>
+            <div>
+                <h4>@Html.Raw(sydney == null ? "N/A" : string.Format("{0:0.0}", sydney.WindSpeed) + "<small>km/h</small>")</h4>
+            </div>
+            <div>
+                <h4>@Html.Raw(sydney == null ? "N/A" : string.Format("{0:0}", sydney.Temperature) + degree)</h4>
+            </div>
+            <div>
+                @if (sydney == null)
+                {
+                    <h4>N/A</h4>
+                }
+                else
+                {
+                    <img title="@Html.Raw(sydney.IconTitle)" alt="@Html.Raw(sydney.IconTitle)" width="45" height="45" src="@Html.Raw(sydney.IconURL)" />
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row weather">
+        <div class="col-md-12">
+            <div>
+                <h4>Melbourne</h4>
+            </div>
+            <div>
+                <h4>@Html.Raw(sydney == null ? "N/A" : string.Format("{0:0.0}", melbourne.WindSpeed) + "<small>km/h</small>")</h4>
+            </div>
+            <div>
+                <h4>@Html.Raw(sydney == null ? "N/A" : string.Format("{0:0}", melbourne.Temperature) + degree)</h4>
+            </div>
+            <div>
+                @if (melbourne == null)
+                {
+                    <h4>N/A</h4>
+                }
+                else
+                {
+                    <img title="@Html.Raw(melbourne.IconTitle)" alt="@Html.Raw(melbourne.IconTitle)" width="45" height="45" src="@Html.Raw(melbourne.IconURL)" />
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row weather">
+        <div class="col-md-12">
+            <div>
+                <h4>Brisbane</h4>
+            </div>
+            <div>
+                <h4>@Html.Raw(brisbane == null ? "N/A" : string.Format("{0:0.0}", brisbane.WindSpeed) + "<small>km/h</small>")</h4>
+            </div>
+            <div>
+                <h4>@Html.Raw(brisbane == null ? "N/A" : string.Format("{0:0}", brisbane.Temperature) + degree)</h4>
+            </div>
+            <div>
+                @if (brisbane == null)
+                {
+                    <h4>N/A</h4>
+                }
+                else
+                {
+                    <img title="@Html.Raw(brisbane.IconTitle)" alt="@Html.Raw(brisbane.IconTitle)" width="45" height="45" src="@Html.Raw(brisbane.IconURL)" />
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row weather">
+        <div class="col-md-12">
+            <div>
+                <h4>Canberra</h4>
+            </div>
+            <div>
+                <h4>@Html.Raw(canberra == null ? "N/A" : string.Format("{0:0.0}", canberra.WindSpeed) + "<small>km/h</small>")</h4>
+            </div>
+            <div>
+                <h4>@Html.Raw(canberra == null ? "N/A" : string.Format("{0:0}", canberra.Temperature) + degree)</h4>
+            </div>
+            <div>
+                @if (canberra == null)
+                {
+                    <h4>N/A</h4>
+                }
+                else
+                {
+                    <img title="@Html.Raw(canberra.IconTitle)" alt="@Html.Raw(canberra.IconTitle)" width="45" height="45" src="@Html.Raw(canberra.IconURL)" />
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row weather">
+        <div class="col-md-12">
+            <div>
+                <h4>Adelaide</h4>
+            </div>
+            <div>
+                <h4>@Html.Raw(adelaide == null ? "N/A" : string.Format("{0:0.0}", adelaide.WindSpeed) + "<small>km/h</small>")</h4>
+            </div>
+            <div>
+                <h4>@Html.Raw(adelaide == null ? "N/A" : string.Format("{0:0}", adelaide.Temperature) + degree)</h4>
+            </div>
+            <div>
+                @if (adelaide == null)
+                {
+                    <h4>N/A</h4>
+                }
+                else
+                {
+                    <img title="@Html.Raw(adelaide.IconTitle)" alt="@Html.Raw(adelaide.IconTitle)" width="45" height="45" src="@Html.Raw(adelaide.IconURL)" />
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row weather">
+        <div class="col-md-12">
+            <div>
+                <h4>Perth</h4>
+            </div>
+            <div>
+                <h4>@Html.Raw(perth == null ? "N/A" : string.Format("{0:0.0}", perth.WindSpeed) + "<small>km/h</small>")</h4>
+            </div>
+            <div>
+                <h4>@Html.Raw(perth == null ? "N/A" : string.Format("{0:0}", perth.Temperature) + degree)</h4>
+            </div>
+            <div>
+                @if (perth == null)
+                {
+                    <h4>N/A</h4>
+                }
+                else
+                {
+                    <img title="@Html.Raw(perth.IconTitle)" alt="@Html.Raw(perth.IconTitle)" width="45" height="45" src="@Html.Raw(perth.IconURL)" />
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row weather">
+        <div class="col-md-12">
+            <div>
+                <h4>Darwin</h4>
+            </div>
+            <div>
+                <h4>@Html.Raw(darwin == null ? "N/A" : string.Format("{0:0.0}", darwin.WindSpeed) + "<small>km/h</small>")</h4>
+            </div>
+            <div>
+                <h4>@Html.Raw(darwin == null ? "N/A" : string.Format("{0:0}", darwin.Temperature) + degree)</h4>
+            </div>
+            <div>
+                @if (darwin == null)
+                {
+                    <h4>N/A</h4>
+                }
+                else
+                {
+                    <img title="@Html.Raw(darwin.IconTitle)" alt="@Html.Raw(darwin.IconTitle)" width="45" height="45" src="@Html.Raw(darwin.IconURL)" />
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row weather">
+        <div class="col-md-12">
+            <div>
+                <h4>Hobart</h4>
+            </div>
+            <div>
+                <h4>@Html.Raw(hobart == null ? "N/A" : string.Format("{0:0.0}", hobart.WindSpeed) + "<small>km/h</small>")</h4>
+            </div>
+            <div>
+                <h4>@Html.Raw(hobart == null ? "N/A" : string.Format("{0:0}", hobart.Temperature) + degree)</h4>
+            </div>
+            <div>
+                @if (hobart == null)
+                {
+                    <h4>N/A</h4>
+                }
+                else
+                {
+                    <img title="@Html.Raw(hobart.IconTitle)" alt="@Html.Raw(hobart.IconTitle)" width="45" height="45" src="@Html.Raw(hobart.IconURL)" />
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <small>@Html.Raw(string.Format("{0:dddd, dd MMMM yyyy hh:mm tt}", updateTime))</small>
+        </div>
+    </div>
+}

@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "Management | Suburbs";
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Suburbs</h1>
+        <ul class="pull-right breadcrumb">
+            <li>Management</li>
+            <li class="active">Suburbs</li>
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+<div class="container content">
+    <div class="row ht450" ng-controller="listSuburbController">
+        <div class="col-md-offset-8 col-md-1">
+            <label class="control-label mrt5">State</label>
+        </div>
+        <div class="col-md-3">
+            <form class="sky-form" style="border:none;">
+                <fieldset style="padding:0px;border:none;">
+                    <section>
+                        <label class="select">
+                            <select ng-model="state" ng-options="item.name for item in stateList track by item.id"></select>
+                            <i></i>
+                        </label>
+                        <img class="pull-right" ng-show="isprogressing" alt="progressing..." title="progressing..." src="~/assets/img/progressbar.gif" />
+                    </section>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-md-12">
+            <div class="tab-v1">
+                <ul class="nav nav-tabs">
+                    <li ng-class="{active:startwith=='A'}"><a data-toggle="tab" ng-click="tabClick('A')" aria-expanded="{{startwith=='A'?'true':'false'}}">A</a></li>
+                    <li ng-class="{active:startwith=='B'}"><a data-toggle="tab" ng-click="tabClick('B')" aria-expanded="{{startwith=='B'?'true':'false'}}">B</a></li>
+                    <li ng-class="{active:startwith=='C'}"><a data-toggle="tab" ng-click="tabClick('C')" aria-expanded="{{startwith=='C'?'true':'false'}}">C</a></li>
+                    <li ng-class="{active:startwith=='D'}"><a data-toggle="tab" ng-click="tabClick('D')" aria-expanded="{{startwith=='D'?'true':'false'}}">D</a></li>
+                    <li ng-class="{active:startwith=='E'}"><a data-toggle="tab" ng-click="tabClick('E')" aria-expanded="{{startwith=='E'?'true':'false'}}">E</a></li>
+                    <li ng-class="{active:startwith=='F'}"><a data-toggle="tab" ng-click="tabClick('F')" aria-expanded="{{startwith=='F'?'true':'false'}}">F</a></li>
+                    <li ng-class="{active:startwith=='G'}"><a data-toggle="tab" ng-click="tabClick('G')" aria-expanded="{{startwith=='G'?'true':'false'}}">G</a></li>
+                    <li ng-class="{active:startwith=='H'}"><a data-toggle="tab" ng-click="tabClick('H')" aria-expanded="{{startwith=='H'?'true':'false'}}">H</a></li>
+                    <li ng-class="{active:startwith=='I'}"><a data-toggle="tab" ng-click="tabClick('I')" aria-expanded="{{startwith=='I'?'true':'false'}}">I</a></li>
+                    <li ng-class="{active:startwith=='J'}"><a data-toggle="tab" ng-click="tabClick('J')" aria-expanded="{{startwith=='J'?'true':'false'}}">J</a></li>
+                    <li ng-class="{active:startwith=='K'}"><a data-toggle="tab" ng-click="tabClick('K')" aria-expanded="{{startwith=='K'?'true':'false'}}">K</a></li>
+                    <li ng-class="{active:startwith=='L'}"><a data-toggle="tab" ng-click="tabClick('L')" aria-expanded="{{startwith=='L'?'true':'false'}}">L</a></li>
+                    <li ng-class="{active:startwith=='M'}"><a data-toggle="tab" ng-click="tabClick('M')" aria-expanded="{{startwith=='M'?'true':'false'}}">M</a></li>
+                    <li ng-class="{active:startwith=='N'}"><a data-toggle="tab" ng-click="tabClick('N')" aria-expanded="{{startwith=='N'?'true':'false'}}">N</a></li>
+                    <li ng-class="{active:startwith=='O'}"><a data-toggle="tab" ng-click="tabClick('O')" aria-expanded="{{startwith=='O'?'true':'false'}}">O</a></li>
+                    <li ng-class="{active:startwith=='P'}"><a data-toggle="tab" ng-click="tabClick('P')" aria-expanded="{{startwith=='P'?'true':'false'}}">P</a></li>
+                    <li ng-class="{active:startwith=='Q'}"><a data-toggle="tab" ng-click="tabClick('Q')" aria-expanded="{{startwith=='Q'?'true':'false'}}">Q</a></li>
+                    <li ng-class="{active:startwith=='R'}"><a data-toggle="tab" ng-click="tabClick('R')" aria-expanded="{{startwith=='R'?'true':'false'}}">R</a></li>
+                    <li ng-class="{active:startwith=='S'}"><a data-toggle="tab" ng-click="tabClick('S')" aria-expanded="{{startwith=='S'?'true':'false'}}">S</a></li>
+                    <li ng-class="{active:startwith=='T'}"><a data-toggle="tab" ng-click="tabClick('T')" aria-expanded="{{startwith=='T'?'true':'false'}}">T</a></li>
+                    <li ng-class="{active:startwith=='U'}"><a data-toggle="tab" ng-click="tabClick('U')" aria-expanded="{{startwith=='U'?'true':'false'}}">U</a></li>
+                    <li ng-class="{active:startwith=='V'}"><a data-toggle="tab" ng-click="tabClick('V')" aria-expanded="{{startwith=='V'?'true':'false'}}">V</a></li>
+                    <li ng-class="{active:startwith=='W'}"><a data-toggle="tab" ng-click="tabClick('W')" aria-expanded="{{startwith=='W'?'true':'false'}}">W</a></li>
+                    <li ng-class="{active:startwith=='X'}"><a data-toggle="tab" ng-click="tabClick('X')" aria-expanded="{{startwith=='X'?'true':'false'}}">X</a></li>
+                    <li ng-class="{active:startwith=='Y'}"><a data-toggle="tab" ng-click="tabClick('Y')" aria-expanded="{{startwith=='Y'?'true':'false'}}">Y</a></li>
+                    <li ng-class="{active:startwith=='Z'}"><a data-toggle="tab" ng-click="tabClick('Z')" aria-expanded="{{startwith=='Z'?'true':'false'}}">Z</a></li>
+                </ul>
+            </div>
+            <list-suburb state="state" status="isprogressing" startwith="startwith" pageno="pageno" pagesize="pagesize" blocksize="blocksize" />
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="/assets/js/common.js"></script>
+    <script type="text/javascript" src="/assets/js/state.js"></script>
+    <script type="text/javascript" src="/assets/js/suburb.js"></script>
+    <script type="text/javascript">
+        var appModule = angular.module('appModule', ['suburbModule']);
+    </script>
+}
+
+

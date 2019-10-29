@@ -1,0 +1,70 @@
+﻿@{
+    ViewData["Title"] = "Management | JobCategories";
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">JobCategories</h1>
+        <ul class="pull-right breadcrumb">
+            <li>Management</li>
+            <li class="active">JobCategories</li>
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+<div class="container content" ng-controller="listJobCategoriesController">
+    <div class="row">
+        <form class="sky-form no-padding no-margin searchForm" novalidate autocomplete="off" style="border:none;">
+            <div class="col-md-offset-2 col-md-7">
+                <fieldset class="no-padding">
+                    <section>
+                        <label class="label">Keywords</label>
+                        <label class="input">
+                            <input type="text" ng-model="keywords" name="keywords" ng-keyup="onKeyup()" />
+                        </label>
+                    </section>
+                </fieldset>
+            </div>
+            <div class="col-md-1">
+                <fieldset class="no-padding">
+                    <section>
+                        <label class="label">&nbsp;</label>
+                        <button type="submit" class="btn-u" ng-click="btnClick()">Search</button>
+                    </section>
+                </fieldset>
+            </div>
+            <div class="col-md-12 text-right">
+                <div class="row">
+                    <div class="col-md-offset-8 col-md-1 text-right">
+                        <label class="label mrt5">Order By</label>
+                    </div>
+                    <div class="col-md-3">
+                        <fieldset class="no-padding">
+                            <section>
+                                <label class="select">
+                                    <select ng-model="orderby" ng-change="orderbyChange()" ng-options="item.name for item in orderbyList track by item.id"></select>
+                                    <i></i>
+                                </label>
+                            </section>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="col-md-12">
+            <img class="pull-right" ng-show="isprogressing" alt="progressing..." title="progressing..." src="~/assets/img/progressbar.gif" />
+        </div>
+    </div>
+    <div class="row  ht450 margin-top-20">
+        <div class="col-md-12">
+            <list-edit-job-category keywords="keywords" orderby="orderby" istriggered="istriggered" isprogressing="isprogressing" pageno="pageno" pagesize="pagesize" blocksize="blocksize" />
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="/assets/js/common.js"></script>
+    <script type="text/javascript" src="/assets/js/jobCategory.js"></script>
+    <script type="text/javascript">
+        var appModule = angular.module('appModule', ['jobCategoryModule']);
+    </script>
+}
+
+

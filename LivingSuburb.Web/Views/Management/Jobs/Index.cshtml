@@ -1,0 +1,102 @@
+﻿@{
+    ViewData["Title"] = "Management | Suburbs";
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Jobs</h1>
+        <ul class="pull-right breadcrumb">
+            <li>Management</li>
+            <li class="active">Jobs</li>
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+<div class="container content" ng-controller="jobListController">
+    <div class="row">
+        <form class="sky-form no-padding no-margin searchForm" novalidate autocomplete="off" style="border:none;">
+            <div class="col-md-5">
+                <fieldset class="no-padding">
+                    <section>
+                        <label class="label">Keywords</label>
+                        <label class="input">
+                            <input type="text" ng-model="keywords" name="keywords" ng-keyup="onKeyup()" />
+                        </label>
+                        <div class="list input" ng-show="keywordlist.length > 0">
+                            <ul>
+                                <li ng-repeat="item in keywordlist">
+                                    <p><a ng-click="onSelected(item)">{{item}}</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                </fieldset>
+            </div>
+            <div class="col-md-3">
+                <fieldset class="no-padding">
+                    <section>
+                        <label class="label">Category</label>
+                        <label class="select">
+                            <select ng-model="category" ng-options="item.name for item in categoryList track by item.id"></select>
+                            <i></i>
+                        </label>
+                    </section>
+                </fieldset>
+            </div>
+            <div class="col-md-3">
+                <fieldset class="no-padding">
+                    <section>
+                        <label class="label">State</label>
+                        <label class="select">
+                            <select ng-model="state" ng-options="item.name for item in stateList track by item.id"></select>
+                            <i></i>
+                        </label>
+                    </section>
+                </fieldset>
+            </div>
+            <div class="col-md-1">
+                <fieldset class="no-padding">
+                    <section>
+                        <label class="label">&nbsp;</label>
+                        <button type="submit" class="btn-u" ng-click="btnClick()">Search</button>
+                    </section>
+                </fieldset>
+            </div>
+            <div class="col-md-12 text-right">
+                <div class="row">
+                    <div class="col-md-offset-8 col-md-1 text-right">
+                        <label class="label mrt5">Order By</label>
+                    </div>
+                    <div class="col-md-3">
+                        <fieldset class="no-padding">
+                            <section>
+                                <label class="select">
+                                    <select ng-model="orderby" ng-change="orderbyChange()" ng-options="item.name for item in orderbyList track by item.id"></select>
+                                    <i></i>
+                                </label>
+                            </section>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="col-md-12">
+            <img class="pull-right" ng-show="isprogressing" alt="progressing..." title="progressing..." src="~/assets/img/progressbar.gif" />
+        </div>
+    </div>
+    <div class="row  ht450 margin-top-20">
+        <div class="col-md-12">
+            <list-edit-job keywords="keywords" category="category" subcategory="subcategory" state="state" orderby="orderby" isdashboard="false" istriggered="istriggered" isprogressing="isprogressing" pageno="pageno" pagesize="pagesize" blocksize="blocksize" />
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="/assets/js/tag.js"></script>
+    <script type="text/javascript" src="/assets/js/common.js"></script>
+    <script type="text/javascript" src="/assets/js/state.js"></script>
+    <script type="text/javascript" src="/assets/js/suburb.js"></script>
+    <script type="text/javascript" src="/assets/js/jobCategory.js"></script>
+    <script type="text/javascript" src="/assets/js/jobSubCategory.js"></script>
+    <script type="text/javascript" src="/assets/js/job.js"></script>
+    <script type="text/javascript">
+        var appModule = angular.module('appModule', ['jobModule']);
+    </script>
+}

@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Home";
+    ViewData["Description"] = "Weather,Precious Metal,News,Technology,Sport,Politic,Entertainment,Health,Science,Forex";
+}
+@section Styles{
+    <link rel="stylesheet" href="/assets/plugins/revolution-slider/rs-plugin/css/settings.css" type="text/css" media="screen">
+    <!--[if lt IE 9]><link rel="stylesheet" href="assets/plugins/revolution-slider/rs-plugin/css/settings-ie8.css" type="text/css" media="screen"><![endif]-->
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Home</h1>
+        <ul class="pull-right breadcrumb"></ul>
+    </div>
+</div>
+<div class="container content">
+    <div class="row">
+        <div class="col-md-12">
+            @await Html.PartialAsync("_CorouselPartial")
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @await Html.PartialAsync("_NewsPartial")
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6 md-margin-bottom-40">
+            @await Html.PartialAsync("_WeatherPartial")
+        </div>
+        <div class="col-md-6 md-margin-bottom-40">
+            @await Html.PartialAsync("_PreciousMetalPartial")
+            @await Html.PartialAsync("_ForexPartial")
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="/assets/plugins/revolution-slider/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="/assets/plugins/revolution-slider/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="/assets/js/plugins/revolution-slider.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            RevolutionSlider.initRSfullWidth();
+        });
+        var appModule = angular.module('appModule', []);
+    </script>
+}

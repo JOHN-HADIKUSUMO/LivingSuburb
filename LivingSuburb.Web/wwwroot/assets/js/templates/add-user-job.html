@@ -1,0 +1,138 @@
+﻿<form name="addJobForm" autocomplete="off" novalidate class="searchForm sky-form mrt50 mrb20">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <fieldset>
+        <section>
+            <label class="label">Code <small><i>*optional</i></small></label>
+            <label class="input">
+                <input type="text" ng-model="code" name="code" />
+            </label>
+        </section>
+        <section>
+            <label class="label">Job Title</label>
+            <label class="input">
+                <input type="text" ng-model="title" name="title" required />
+            </label>
+            <span ng-show="title == null && addJobForm.title.$error.required && addJobForm.title.$touched" class="text-danger">Title is required.</span>
+        </section>
+        <section>
+            <label class="label">Company Name <small><i>*optional</i></small></label>
+            <label class="input">
+                <input type="text" ng-model="company" name="company" />
+            </label>
+        </section>
+        <section>
+            <label class="label">Job Types</label>
+            <label class="select">
+                <select ng-model="jobtype" name="jobtype" ng-options="item.name for item in jobtypes track by item.id" required>
+                    <option></option>
+                </select>
+                <i></i>
+            </label>
+            <span ng-show="jobtype == undefined && addJobForm.jobtype.$error.required && addJobForm.jobtype.$touched" class="text-danger">Job type is required.</span>
+        </section>
+        <section>
+            <label class="label">Job Terms</label>
+            <label class="select">
+                <select ng-model="jobterm" name="jobterm" ng-options="item.name for item in jobterms track by item.id" required>
+                    <option></option>
+                </select>
+                <i></i>
+            </label>
+            <span ng-show="jobterm == undefined && addJobForm.jobterm.$error.required && addJobForm.jobterm.$touched" class="text-danger">Job term is required.</span>
+        </section>
+        <section>
+            <label class="label">Category</label>
+            <label class="select">
+                <select ng-model="category" name="category" ng-options="item.name for item in categories track by item.id" ng-change="categoryChange()" required></select>
+                <i></i>
+            </label>
+            <span ng-show="category == undefined && addJobForm.category.$error.required && addJobForm.category.$touched" class="text-danger">Category is required.</span>
+        </section>
+        <section>
+            <label class="label">Sub Category <small><i>*optional</i></small></label>
+            <label class="select">
+                <select ng-model="subcategory" name="subcategory" ng-options="item.name for item in subcategories track by item.id"></select>
+                <i></i>
+            </label>
+        </section>
+        <section>
+            <label class="label">State</label>
+            <label class="select">
+                <select ng-model="state" name="state" ng-options="item.name for item in states track by item.id" required></select>
+                <i></i>
+            </label>
+            <span ng-show="state == undefined && addJobForm.state.$error.required && addJobForm.state.$touched" class="text-danger">State is required.</span>
+        </section>
+        <section>
+            <label class="label">City/Suburb <small><i>*optional</i></small></label>
+            <label class="input">
+                <input type="text" ng-model="suburb.name" name="suburb" ng-keyup="onSuburbKeyup()" />
+                <input type="hidden" ng-model="suburb.id" />
+            </label>
+            <div class="list input" ng-show="suburbList.length > 0">
+                <ul>
+                    <li ng-repeat="item in suburbList">
+                        <p><a ng-click="onSuburbSelected(item)">{{item.name
+                }}</a></p>
+                </li>
+                </ul>
+                </div>
+        </section>
+        <section>
+            <label class="label">Short Desciption <small><i>*200 characters max</i></small></label>
+            <label class="input">
+                <textarea id="shortDescription" ng-model="shortDescription" maxlength="200" name="shortDescription" class="form-control textarea-not-resizable" rows="4" required></textarea>
+            </label>
+            <span ng-show="shortDescription == null && addJobForm.shortDescription.$error.required && addJobForm.shortDescription.$touched" class="text-danger">Short Desciption is required.</span>
+        </section>
+        <section>
+            <label class="label">Full Desciption <a ng-click="searchClick()" class="f-r" title="Find Templates"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></label>
+            <label class="input">
+                <textarea id="fullDescription" ng-model="fullDescription" name="fullDescription" class="form-control" rows="20" required></textarea>
+            </label>
+            <span ng-show="fullDescription.length == null && addJobForm.fullDescription.$error.required && addJobForm.fullDescription.$touched" class="text-danger">Full description name is required.</span>
+        </section>
+        <section>
+            <label class="label">Closing Date</label>
+            <label class="input">
+                <input type="text" id="closeDate" ng-model="closeDate" name="closeDate" required />
+            </label>
+            <span ng-show="closeDate.length == null && addJobForm.closeDate.$error.required && addJobForm.closeDate.$touched" class="text-danger">Closing date is required.</span>
+        </section>
+        <section>
+            <label class="label">Add New Tag</label>
+            <label class="input">
+                <input type="text" ng-model="tag.name" ng-keyup="onTagKeyup()" />
+                <input type="hidden" ng-model="tag.id" />
+            </label>
+            <div class="list input" ng-show="tagList.length > 0">
+                <ul>
+                    <li ng-repeat="item in tagList">
+                        <p><a ng-click="onTagSelected(item)">{{item.name}}</a></p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn-u pull-right mrt10 margin-bottom-10" ng-click="addTagClick()">Add</button>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="row" ng-repeat="item in tags|filter:{isdeleted:false}">
+                <div class="col-md-8 text-left">
+                    <span>{{item.name}}</span>
+                </div>
+                <div class="col-md-4 text-right">
+                    <button type="submit" class="btn-u margin-bottom-10" ng-click="deleteTag(item)">Delete</button>
+                </div>
+            </div>
+        </section>
+    </fieldset>
+    <footer class="text-right">
+        <button type="submit" class="btn-u" ng-click="clearClick()">Clear</button>
+        <button type="submit" ng-class="addJobForm.$invalid?'btn-u-disabled':'btn-u'" ng-click="submitClick()" ng-disabled="addJobForm.$invalid">Submit</button>
+    </footer>
+</form>

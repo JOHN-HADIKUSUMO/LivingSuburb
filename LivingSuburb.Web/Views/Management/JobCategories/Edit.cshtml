@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Management | JobCategories | Edit";
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Edit</h1>
+        <ul class="pull-right breadcrumb">
+            <li>Management</li>
+            <li><a href="/Management/JobCategories">JobCategories</a></li>
+            <li class="active">Edit</li>
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+<div class="row">
+    <div class="col-md-offset-3 col-md-6 ht450">
+        <edit-job-category id="@Html.Raw(TempData["Id"].ToString())" />
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="/assets/js/common.js"></script>
+    <script type="text/javascript" src="/assets/js/jobCategory.js"></script>
+    <script type="text/javascript">
+        var appModule = angular.module('appModule', ['jobCategoryModule']);
+    </script>x
+}

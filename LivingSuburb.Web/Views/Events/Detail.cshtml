@@ -1,0 +1,56 @@
+﻿@using LivingSuburb.Services
+@model EventDetail
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Detail</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/Events">Events</a></li>
+            <li class="active">Detail</li>
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+<div class="container content" ng-controller="detailController">
+    <div class="row ht450 margin-top-20">
+        <div class="col-md-12">
+            <h1 style="margin-bottom:0px;">@Html.Raw(Model.Title)</h1>
+        </div>
+        <div class="col-md-12">
+            <h4 style="margin-top:10px;">@Html.Raw(Model.Period)</h4>
+        </div>
+        <div class="col-md-12">
+            <h3 style="margin-top:0px;">@Html.Raw(string.IsNullOrEmpty(Model.Location) ? "" : (Model.Location + ", ") + Model.Country)</h3>
+        </div>
+        <div class="col-md-12">
+            @Html.Raw(Model.Description)
+        </div>
+        <div class="col-md-12 mrt50 text-right">
+            <button class="btn-u" ng-click="btnClick()">Back</button>
+            <button class="btn-u" ng-click="visitClick('@Html.Raw(Model.SourceURL)')">Visit Website</button>
+        </div>
+        <div class="col-md-12">
+            <hr />
+        </div>
+        <div class="col-md-12">
+            @{
+                foreach (string tag in Model.Tags)
+                {
+                    <label style="-webkit-border-radius: 45px;-moz-border-radius: 45px;border-radius: 45px;margin:5px;padding:5px 15px 5px 15px;border:2px solid #808080;">@Html.Raw(tag)</label>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script type="text/javascript" src="~/assets/js/tag.js"></script>
+    <script type="text/javascript" src="~/assets/js/country.js"></script>
+    <script type="text/javascript" src="~/assets/js/eventCategory.js"></script>
+    <script type="text/javascript" src="~/assets/js/eventType.js"></script>
+    <script type="text/javascript" src="~/assets/js/event.js"></script>
+    <script type="text/javascript">
+        var appModule = angular.module('appModule', ['eventModule']);
+    </script>
+}
+

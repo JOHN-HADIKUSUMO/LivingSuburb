@@ -1,0 +1,104 @@
+@using Microsoft.Extensions.Caching.Memory
+@using LivingSuburb.Models
+@using LivingSuburb.Services
+@inject IMemoryCache cache
+@inject ForexService ForexService
+@{
+    Forex forex = await ForexService.GetForex();
+}
+<div class="headline"><h2>Today's Foreign Exchange</h2></div>
+<div class="row">
+    <div class="col-md-6">
+        <div style="width:50%;float:left;">
+            <h4>USD</h4>
+        </div>
+        <div style="width:50%;float:right;text-align:right;">
+            <h4>@Html.Raw(string.Format("{0:#,##0.000}", forex.USD))</h4>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div style="width:50%;float:left;">
+            <h4>GBP</h4>
+        </div>
+        <div style="width:50%;float:right;text-align:right;">
+            <h4>@Html.Raw(string.Format("{0:#,##0.000}", forex.GBP))</h4>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div style="width:50%;float:left;">
+            <h4>NZD</h4>
+        </div>
+        <div style="width:50%;float:right;text-align:right;">
+            <h4>@Html.Raw(string.Format("{0:#,##0.000}", forex.NZD))</h4>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div style="width:50%;float:left;">
+            <h4>EUR</h4>
+        </div>
+        <div style="width:50%;float:right;text-align:right;">
+            <h4>@Html.Raw(string.Format("{0:#,##0.000}", forex.EUR))</h4>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div style="width:50%;float:left;">
+            <h4>JPY</h4>
+        </div>
+        <div style="width:50%;float:right;text-align:right;">
+            <h4>@Html.Raw(string.Format("{0:#,##0.000}", forex.JPY))</h4>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div style="width:50%;float:left;">
+            <h4>CAD</h4>
+        </div>
+        <div style="width:50%;float:right;text-align:right;">
+            <h4>@Html.Raw(string.Format("{0:#,##0.000}", forex.CAD))</h4>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div style="width:50%;float:left;">
+            <h4>MYR</h4>
+        </div>
+        <div style="width:50%;float:right;text-align:right;">
+            <h4>@Html.Raw(string.Format("{0:#,##0.000}", forex.MYR))</h4>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div style="width:50%;float:left;">
+            <h4>SGD</h4>
+        </div>
+        <div style="width:50%;float:right;text-align:right;">
+            <h4>@Html.Raw(string.Format("{0:#,##0.000}", forex.SGD))</h4>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div style="width:50%;float:left;">
+            <h4>IDR</h4>
+        </div>
+        <div style="width:50%;float:right;text-align:right;">
+            <h4>@Html.Raw(string.Format("{0:#,##0.000}", forex.IDR))</h4>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div style="width:50%;float:left;">
+            <h4>CNY</h4>
+        </div>
+        <div style="width:50%;float:right;text-align:right;">
+            <h4>@Html.Raw(string.Format("{0:#,##0.000}", forex.CNY))</h4>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 text-right">
+        <small>@Html.Raw(string.Format("{0:dddd, dd MMMM yyyy hh:mm tt}", forex.LastUpdate))</small>
+    </div>
+</div>

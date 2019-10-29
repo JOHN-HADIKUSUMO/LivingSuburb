@@ -1,0 +1,139 @@
+/* Add here all your css styles (customizations) */
+
+.mrt5 {
+    margin-top: 5px;
+}
+
+.mrt10 {
+    margin-top: 10px;
+}
+
+.mrt50 {
+    margin-top: 50px;
+}
+
+.mrb20 {
+    margin-bottom: 20px;
+}
+
+.ht450 {
+    min-height: 450px;
+}
+
+input.disabled {
+    background-color: #efefef !important;
+}
+
+form div.list {
+    width: 100%;
+    margin-top: -5px;
+    display: block;
+    min-height: 0px;
+    z-index: 1000;
+    position: absolute;
+    background-color: #ffffff;
+    border-bottom: 1px solid #999999;
+    border-left: 1px solid #999999;
+    border-right: 1px solid #999999;
+}
+
+form.searchForm ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0 0 0 13px;
+}
+
+    form.searchForm ul li {
+        height: 30px;
+    }
+
+        form.searchForm ul li p {
+            font-size: 14px;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+
+.term-policy {
+    background-color: #EEEEEE;
+    height: auto;
+    border-radius: 25px;
+    padding: 15px;
+}
+
+.row .weather .col-md-12 div:first-child {
+    width: 40%;
+    float: left;
+}
+
+.row .weather .col-md-12 div:not(:first-child) {
+    width: 20%;
+    float: right;
+    text-align: right;
+}
+
+.row .news .col-md-6 div {
+    display: block;
+    border-bottom: 2px solid #72c02c;
+}
+
+.row .news div.col-md-6 a {
+    display: block;
+    color: #808080;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.nav.nav-tabs li a {
+    cursor: pointer;
+}
+
+.pagination li a {
+    cursor: pointer;
+}
+
+.gallery-modal-dialog .modal-dialog {
+    width: 80%;
+}
+
+.text-danger{
+    text-align:center;
+}
+
+.text-danger ul{
+    list-style:none;
+    padding:0px;
+    margin:0px;
+}
+
+    .text-danger ul li {
+        border-radius: 5px;
+        border: 2px solid #73AD21;
+        list-style: none;
+        background-color: #ff0000;
+        padding: 20px;
+        margin: 30px;
+        color:#ffffff;
+    }
+
+.textarea-not-resizable {
+    resize: none;
+}
+
+.f-r{
+    float:right;
+}
+
+@media (max-width: 575px) {
+}
+
+@media (min-width: 576px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1200px) {
+}

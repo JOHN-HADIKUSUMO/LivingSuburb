@@ -1,0 +1,66 @@
+﻿
+<div class="row" ng-show="$ctrl.data.events.length > 0">
+    <div class="col-md-12 text-center">
+        <ul class="pagination">
+            <li ng-show="$ctrl.data.first!=null">
+                <a ng-click="$ctrl.firstClick()">First</a>
+            </li>
+            <li ng-show="$ctrl.data.prev!=null">
+                <a ng-click="$ctrl.prevClick()">Prev</a>
+            </li>
+            <li ng-repeat="item in $ctrl.data.pages" ng-class="{active:$ctrl.data.selectedPageNo==item}">
+                <a ng-click="$ctrl.navClick($index,item)">{{item}}</a>
+            </li>
+            <li ng-show="$ctrl.data.next!=null">
+                <a ng-click="$ctrl.nextClick()">Next</a>
+            </li>
+            <li ng-show="$ctrl.data.last!=null">
+                <a ng-click="$ctrl.lastClick()">Last</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-12 text-center">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Period</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in $ctrl.events">
+                    <td align="left">{{item.id}}</td>
+                    <td align="left">{{item.title}}</td>
+                    <td align="left">{{item.category}}</td>
+                    <td align="left">{{item.period}}</td>
+                    <td align="right">
+                        <button class="btn-u" ng-click="$ctrl.editClick(item)">Edit</button>
+                        <button class="btn-u" ng-click="$ctrl.deleteClick(item)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-12 text-center">
+        <ul class="pagination">
+            <li ng-show="$ctrl.data.first!=null">
+                <a ng-click="$ctrl.firstClick()">First</a>
+            </li>
+            <li ng-show="$ctrl.data.prev!=null">
+                <a ng-click="$ctrl.prevClick()">Prev</a>
+            </li>
+            <li ng-repeat="item in $ctrl.data.pages" ng-class="{active:$ctrl.data.selectedPageNo==item}">
+                <a ng-click="$ctrl.navClick($index,item)">{{item}}</a>
+            </li>
+            <li ng-show="$ctrl.data.next!=null">
+                <a ng-click="$ctrl.nextClick()">Next</a>
+            </li>
+            <li ng-show="$ctrl.data.last!=null">
+                <a ng-click="$ctrl.lastClick()">Last</a>
+            </li>
+        </ul>
+    </div>
+</div>

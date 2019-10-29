@@ -1,0 +1,28 @@
+﻿@model LivingSuburb.Models.SearchSuburbsDetail
+@{
+    ViewData["Title"] = "Find Your Suburb";
+}
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">@Html.Raw(Model.Name)</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/Suburbs">Find Your Suburb</a></li>
+            <li><a href="/Suburbs/@Html.Raw(Model.State)">@Html.Raw(Model.State)</a></li>
+            <li class="active">@Html.Raw(Model.Name)</li>
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+<div class="row">
+    <div class="col-md-offset-4 col-md-4 ht450">
+
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="/assets/js/common.js"></script>
+    <script type="text/javascript" src="/assets/js/state.js"></script>
+    <script type="text/javascript" src="/assets/js/suburb.js"></script>
+    <script type="text/javascript">
+        var appModule = angular.module('appModule', ['suburbModule']);
+    </script>
+}

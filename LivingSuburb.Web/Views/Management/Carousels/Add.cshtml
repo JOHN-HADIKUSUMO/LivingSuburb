@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Management | Corousels | Add";
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Add</h1>
+        <ul class="pull-right breadcrumb">
+            <li>Management</li>
+            <li><a href="/Management/Carousels">Carousels</a></li>
+            <li class="active">Add</li>
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+<div class="row">
+    <div class="col-md-offset-3 col-md-5 ht450">
+        <add-carousel />
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="/assets/js/common.js"></script>
+    <script type="text/javascript" src="/assets/js/file.js"></script>
+    <script type="text/javascript" src="/assets/js/state.js"></script>
+    <script type="text/javascript" src="/assets/js/suburb.js"></script>
+    <script type="text/javascript" src="/assets/js/gallery.js"></script>
+    <script type="text/javascript" src="/assets/js/carousel.js"></script>
+    <script type="text/javascript">
+        var appModule = angular.module('appModule', ['carouselModule']);
+    </script>
+}

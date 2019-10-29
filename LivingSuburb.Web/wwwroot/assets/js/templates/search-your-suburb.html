@@ -1,0 +1,24 @@
+﻿<form name="searchForm" autocomplete="off" class="searchForm sky-form mrt50 mrb20">
+    <header class="text-center">Please enter the suburb you are seeking</header>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <fieldset>
+        <section>
+            <label class="label"></label>
+            <label class="input">
+                <input type="text" ng-model="keywords" name="keywords" ng-keyup="onKeyup()" required />
+            </label>
+            <div class="list" ng-show="suburbs.length > 0">
+                <ul>
+                    <li ng-repeat="item in suburbs track by item.id">
+                        <p><a ng-click="onSelected(item)">{{item.name}}, {{item.state}}</a></p>
+                    </li>
+                </ul>
+            </div>
+            <span ng-show="suburbs.length > 0 && searchForm.keywords.$error.required && searchForm.keywords.$touched" class="text-danger">keywords is required.</span>
+            <img src="/assets/img/progressbar.gif" class="pull-right" ng-show="searching" alt="loading" title="loading" />
+        </section>
+    </fieldset>
+    <footer class="text-right">
+        <button type="submit" class="btn-u" ng-click="btnClick()" ng-disabled="suburb==null">Search</button>
+    </footer>
+</form>

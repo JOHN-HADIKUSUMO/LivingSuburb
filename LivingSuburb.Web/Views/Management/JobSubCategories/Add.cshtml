@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Management | JobSubCategories | Add";
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Add</h1>
+        <ul class="pull-right breadcrumb">
+            <li>Management</li>
+            <li><a href="/Management/JobSubCategories">JobSubCategories</a></li>
+            <li class="active">Add</li>
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+<div class="row">
+    <div class="col-md-offset-3 col-md-6 ht450">
+        <add-job-sub-category />
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="/assets/js/common.js"></script>
+    <script type="text/javascript" src="~/assets/js/jobCategory.js"></script>
+    <script type="text/javascript" src="~/assets/js/jobSubCategory.js"></script>
+    <script type="text/javascript">
+        var appModule = angular.module('appModule', ['jobSubCategoryModule']);
+    </script>
+}

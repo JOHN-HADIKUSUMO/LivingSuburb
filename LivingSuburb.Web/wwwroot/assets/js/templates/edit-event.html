@@ -1,0 +1,133 @@
+﻿<form name="editEventForm" autocomplete="off" novalidate class="searchForm sky-form mrt50 mrb20">
+    <header class="text-center">Edit Event No. {{id}}</header>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <fieldset>
+        <section>
+            <label class="label">Title</label>
+            <label class="input">
+                <input type="text" ng-model="title" name="title" required />
+            </label>
+            <span ng-show="title.length == null && editEventForm.title.$error.required && editEventForm.title.$touched" class="text-danger">Title is required.</span>
+        </section>
+        <section>
+            <label class="label">Title URL</label>
+            <label class="input">
+                <input type="text" ng-model="titleURL" name="titleURL" required ng-mouseleave="onTitleMouseLeave()" />
+            </label>
+            <span ng-show="titleURL.length == null && editEventForm.titleURL.$error.required && editEventForm.titleURL.$touched" class="text-danger">Title URL is required.</span>
+        </section>
+        <section>
+            <label class="label">Short Desciption</label>
+            <label class="input">
+                <textarea id="shortDescription" ng-model="shortDescription" name="shortDescription" class="form-control" rows="8" required></textarea>
+            </label>
+            <span ng-show="shortDescription.length == null && editEventForm.shortDescription.$error.required && editEventForm.shortDescription.$touched" class="text-danger">Short Desciption is required.</span>
+        </section>
+        <section>
+            <label class="label">Full Desciption</label>
+            <label class="input">
+                <textarea id="fullDescription" ng-model="fullDescription" name="fullDescription" class="form-control" rows="20" required></textarea>
+            </label>
+            <span ng-show="fullDescription.length == null && editEventForm.fullDescription.$error.required && editEventForm.fullDescription.$touched" class="text-danger">Full description name is required.</span>
+        </section>
+        <section>
+            <label class="label">Country</label>
+            <label class="input">
+                <input type="text" ng-model="country.name" name="country" required ng-keyup="onCountryKeyup()" />
+                <input type="hidden" ng-model="country.id" />
+            </label>
+            <span ng-show="country.length == null && editEventForm.country.$error.required && editEventForm.country.$touched" class="text-danger">Country is required.</span>
+            <div class="list input" ng-show="countryList.length > 0" ng-mouseenter="onCountryListMouseEnter()" ng-mouseleave="onCountryListMouseLeave()">
+                <ul>
+                    <li ng-repeat="item in countryList">
+                        <p><a ng-click="onCountrySelected(item)">{{item.name}}</a></p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section>
+            <label class="label">Location</label>
+            <label class="input">
+                <input type="text" ng-model="location" name="location" />
+            </label>
+        </section>
+        <section>
+            <label class="label">Category</label>
+            <label class="select">
+                <select ng-model="category" name="category" ng-options="item.name for item in categoryList track by item.id" ng-change="categoryChange()" required></select>
+                <i></i>
+            </label>
+            <span ng-show="category == undefined && editEventForm.category.$error.required && editEventForm.category.$touched" class="text-danger">Category is required.</span>
+        </section>
+        <section>
+            <label class="label">Event Type</label>
+            <label class="select">
+                <select ng-model="eventType" name="eventType" ng-options="item.name for item in eventTypeList track by item.id"></select>
+                <i></i>
+            </label>
+        </section>
+        <section>
+            <label class="label">From Date</label>
+            <label class="input">
+                <input type="text" id="fromDate" ng-model="fromDate" name="fromDate" required />
+            </label>
+            <span ng-show="fromDate.length == null && editEventForm.fromDate.$error.required && editEventForm.fromDate.$touched" class="text-danger">From date is required.</span>
+        </section>
+        <section>
+            <label class="label">To Date</label>
+            <label class="input">
+                <input type="text" id="toDate" ng-model="toDate" name="toDate" required />
+            </label>
+            <span ng-show="toDate.length == null && editEventForm.toDate.$error.required && editEventForm.toDate.$touched" class="text-danger">To date is required.</span>
+        </section>
+        <section>
+            <label class="label">Date Published</label>
+            <label class="input">
+                <input type="text" id="datePublished" ng-model="datePublished" name="datePublished" required />
+            </label>
+            <span ng-show="datePublished.length == null && editEventForm.datePublished.$error.required && editEventForm.datePublished.$touched" class="text-danger">Date published is required.</span>
+        </section>
+        <section>
+            <label class="label">URL</label>
+            <label class="input">
+                <input type="text" ng-model="url" name="url" required />
+            </label>
+            <span ng-show="url.length == null && editEventForm.url.$error.required && editEventForm.url.$touched" class="text-danger">URL is required.</span>
+        </section>
+        <section>
+            <label class="label">Add New Tag</label>
+            <label class="input">
+                <input type="text" ng-model="tag.name" ng-keyup="onTagKeyup()" />
+                <input type="hidden" ng-model="tag.id" />
+            </label>
+            <div class="list input" ng-show="tagList.length > 0" ng-mouseenter="onTagListMouseEnter()" ng-mouseleave="onTagListMouseLeave()">
+                <ul>
+                    <li ng-repeat="item in tagList">
+                        <p><a ng-click="onTagSelected(item)">{{item.name}}</a></p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn-u pull-right mrt10 margin-bottom-10" ng-click="addTagClick()">Add</button>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="row" ng-repeat="item in tags|filter:{isdeleted:false}">
+                <div class="col-md-8 text-left">
+                    <span>{{item.name}}</span>
+                </div>
+                <div class="col-md-4 text-right">
+                    <button type="submit" class="btn-u margin-bottom-10" ng-click="deleteTag(item)">Delete</button>
+                </div>
+            </div>
+        </section>
+    </fieldset>
+    <footer class="text-right">
+        <button type="submit" class="btn-u" ng-click="backClick()">Back</button>
+        <button type="submit" class="btn-u" ng-click="updateClick()" ng-disabled="editJobForm.$invalid">Update</button>
+    </footer>
+</form>

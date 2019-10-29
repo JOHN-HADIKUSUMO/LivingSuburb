@@ -1,0 +1,17 @@
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p>
+                    @Html.Raw(DateTime.Now.Year) &copy; All Rights Reserved.
+                    <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a> | <a asp-area="" asp-controller="Home" asp-action="Term">Terms of Service</a>
+                </p>
+            </div>
+            <!-- Social Links -->
+            <div class="col-md-6">
+                <partial name="_SocialPartial" />
+            </div>
+            <!-- End Social Links -->
+        </div>
+    </div>
+</div>

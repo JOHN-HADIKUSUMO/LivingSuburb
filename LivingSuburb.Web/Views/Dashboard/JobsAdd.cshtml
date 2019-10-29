@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Add Jobs";
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Add</h1>
+        <ul class="pull-right breadcrumb">
+            <li>Jobs</li>
+            <li class="active">Add</li>
+        </ul>
+    </div>
+</div>
+<div class="container content">
+    <div class="col-md-12 ht450">
+        <add-user-job />
+    </div>
+</div>
+@section Styles{
+    <link type="text/css" href="/assets/plugins/summernote/css/summernote.css" rel="stylesheet">
+    <link type="text/css" href="/assets/plugins/datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet">
+}
+
+@section Scripts{
+    <script type="text/javascript" src="/assets/plugins/moment/moment.min.js"></script>
+    <script type="text/javascript" src="/assets/plugins/datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="/assets/plugins/summernote/js/summernote.js"></script>
+    <script type="text/javascript" src="/assets/js/tag.js"></script>
+    <script type="text/javascript" src="/assets/js/common.js"></script>
+    <script type="text/javascript" src="/assets/js/state.js"></script>
+    <script type="text/javascript" src="/assets/js/suburb.js"></script>
+    <script type="text/javascript" src="/assets/js/jobCategory.js"></script>
+    <script type="text/javascript" src="/assets/js/jobSubCategory.js"></script>
+    <script type="text/javascript" src="/assets/js/job.js"></script>
+    <script type="text/javascript">
+        var appModule = angular.module('appModule', ['ui.bootstrap', 'jobModule']);
+    </script>
+}

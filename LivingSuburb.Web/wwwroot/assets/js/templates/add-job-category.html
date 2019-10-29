@@ -1,0 +1,31 @@
+﻿<form name="$ctrl.addJobCategoryForm" autocomplete="off" novalidate class="searchForm sky-form mrt50 mrb20">
+    <header class="text-center">Enter A New Job Category</header>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <fieldset>
+        <section>
+            <label class="label">Name</label>
+            <label class="input">
+                <input type="text" ng-model="$ctrl.name" name="name" required />
+            </label>
+            <span ng-show="$ctrl.name == null && $ctrl.addJobCategoryForm.name.$error.required && $ctrl.addJobCategoryForm.name.$touched" class="text-danger">Name is required.</span>
+        </section>
+        <section>
+            <label class="label">URL Friendly Name</label>
+            <label class="input">
+                <input type="text" ng-model="$ctrl.nameURL" name="nameURL" required ng-mouseleave="$ctrl.onTitleMouseLeave()"/>
+            </label>
+            <span ng-show="$ctrl.nameURL.length == null && $ctrl.addJobCategoryForm.nameURL.$error.required && $ctrl.addJobCategoryForm.nameURL.$touched" class="text-danger">Name URL friendly is required.</span>
+        </section>
+        <section>
+            <label class="label">Rank</label>
+            <label class="input">
+                <input type="text" ng-model="$ctrl.rank" name="rank" required />
+            </label>
+            <span ng-show="$ctrl.rank.length == null && $ctrl.addJobCategoryForm.rank.$error.required && $ctrl.addJobCategoryForm.rank.$touched" class="text-danger">Rank is required.</span>
+        </section>
+    </fieldset>
+    <footer class="text-right">
+        <button type="submit" class="btn-u" ng-click="$ctrl.clearClick()">Clear</button>
+        <button type="submit" class="btn-u" ng-click="$ctrl.submitClick()" ng-disabled="$ctrl.addJobCategoryForm.$invalid">Submit</button>
+    </footer>
+</form>

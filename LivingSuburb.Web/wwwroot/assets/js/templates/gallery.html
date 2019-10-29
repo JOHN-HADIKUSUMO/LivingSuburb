@@ -1,0 +1,55 @@
+﻿<div class="row">
+    <div class="col-md-12 margin-bottom-30 text-center">
+        <h2>Photos Gallery</h2>
+    </div>
+    <div class="col-md-12 text-center">
+        <ul class="pagination">
+            <li ng-show="data.first!=null">
+                <a ng-click="firstClick()">First</a>
+            </li>
+            <li ng-show="data.prev!=null">
+                <a ng-click="prevClick()">Prev</a>
+            </li>
+            <li ng-repeat="item in data.pages" ng-class="{active:data.selectedPageNo==item}">
+                <a ng-click="navClick($index,item)">{{item}}</a>
+            </li>
+            <li ng-show="data.next!=null">
+                <a ng-click="nextClick()">Next</a>
+            </li>
+            <li ng-show="data.last!=null">
+                <a ng-click="lastClick()">Last</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-12 text-center">
+        <div class="row" style="margin:20px;">
+            <div class="col-md-2 text-center" ng-repeat="item in galleries">
+                <div class="blog-grid" style="position:relative;">
+                    <a ng-click="imgClick(item)"><img class="img-responsive" ng-src="{{item.urL_570_320}}" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 text-center">
+        <ul class="pagination">
+            <li ng-show="data.first!=null">
+                <a ng-click="firstClick()">First</a>
+            </li>
+            <li ng-show="data.prev!=null">
+                <a ng-click="prevClick()">Prev</a>
+            </li>
+            <li ng-repeat="item in data.pages" ng-class="{active:data.selectedPageNo==item}">
+                <a ng-click="navClick($index,item)">{{item}}</a>
+            </li>
+            <li ng-show="data.next!=null">
+                <a ng-click="nextClick()">Next</a>
+            </li>
+            <li ng-show="data.last!=null">
+                <a ng-click="lastClick()">Last</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-12 text-right">
+        <button class="btn-u" style="margin-right:20px;margin-bottom:20px;" ng-click="closeClick()">Close</button>
+    </div>
+</div>

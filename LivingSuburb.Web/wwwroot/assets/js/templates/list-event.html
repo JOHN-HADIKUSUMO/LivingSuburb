@@ -1,0 +1,72 @@
+﻿
+<div class="row" ng-show="$ctrl.data.events.length > 0">
+    <div class="col-md-12 text-center">
+        <ul class="pagination">
+            <li ng-show="$ctrl.data.first!=null">
+                <a ng-click="$ctrl.firstClick()">First</a>
+            </li>
+            <li ng-show="$ctrl.data.prev!=null">
+                <a ng-click="$ctrl.prevClick()">Prev</a>
+            </li>
+            <li ng-repeat="item in $ctrl.data.pages" ng-class="{active:$ctrl.data.selectedPageNo==item}">
+                <a ng-click="$ctrl.navClick($index,item)">{{item}}</a>
+            </li>
+            <li ng-show="$ctrl.data.next!=null">
+                <a ng-click="$ctrl.nextClick()">Next</a>
+            </li>
+            <li ng-show="$ctrl.data.last!=null">
+                <a ng-click="$ctrl.lastClick()">Last</a>
+            </li>
+        </ul>
+    </div>
+    <div ng-repeat="item in $ctrl.events" class="col-md-12 text-center">
+        <div class="row">
+            <div class="col-md-10 text-left">
+                <h2><a ng-href="/Events/Detail/{{item.id}}/{{item.titleURL}}"><span>{{item.title}} - </span> <span>{{item.country}}</span></a></h2>
+            </div>
+            <div class="col-md-2 text-right">
+                {{item.period}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-left">
+                <h4><a ng-href="/Events/{{item.categoryURL}}"><span>{{item.category}}</span></a> <span>></span>  <a ng-href="/Events/{{item.categoryURL}}/{{item.eventTypeURL}}"><span>{{item.eventType}}</span></a></h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 text-left">
+                <h3>{{item.company}}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-left">
+                {{item.shortDescription}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <hr />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 text-center">
+        <ul class="pagination">
+            <li ng-show="$ctrl.data.first!=null">
+                <a ng-click="$ctrl.firstClick()">First</a>
+            </li>
+            <li ng-show="$ctrl.data.prev!=null">
+                <a ng-click="$ctrl.prevClick()">Prev</a>
+            </li>
+            <li ng-repeat="item in $ctrl.data.pages" ng-class="{active:$ctrl.data.selectedPageNo==item}">
+                <a ng-click="$ctrl.navClick($index,item)">{{item}}</a>
+            </li>
+            <li ng-show="$ctrl.data.next!=null">
+                <a ng-click="$ctrl.nextClick()">Next</a>
+            </li>
+            <li ng-show="$ctrl.data.last!=null">
+                <a ng-click="$ctrl.lastClick()">Last</a>
+            </li>
+        </ul>
+    </div>
+</div>

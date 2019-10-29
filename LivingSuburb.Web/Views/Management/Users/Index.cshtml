@@ -1,0 +1,66 @@
+﻿r@{
+    ViewData["Title"] = "Management | Users";
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Users</h1>
+        <ul class="pull-right breadcrumb">
+            <li>Management</li>
+            <li class="active">Users</li>
+        </ul>
+    </div>
+</div><!--/breadcrumbs-->
+<div class="container content" ng-controller="listUserController">
+    <div class="row">
+        <form class="sky-form no-padding no-margin searchForm" novalidate autocomplete="off" style="border:none;">
+            <div class="col-md-7">
+                <fieldset class="no-padding">
+                    <section>
+                        <label class="label">Keywords</label>
+                        <label class="input">
+                            <input type="text" ng-model="keywords" name="keywords" />
+                        </label>
+                    </section>
+                </fieldset>
+            </div>
+            <div class="col-md-3">
+                <fieldset class="no-padding">
+                    <section>
+                        <label class="label">Order By</label>
+                        <label class="select">
+                            <select ng-model="orderby">
+                                <option value="1">Fullname</option>
+                                <option value="2">Email</option>
+                            </select>
+                            <i></i>
+                        </label>
+                    </section>
+                </fieldset>
+            </div>
+            <div class="col-md-2">
+                <fieldset class="no-padding">
+                    <section>
+                        <label class="label">&nbsp;</label>
+                        <button type="submit" class="btn-u" ng-click="searchClick()" ng-disabled="keywords==''">Search</button>
+                    </section>
+                </fieldset>
+            </div>
+            <div class="col-md-12">
+                <img class="pull-right" ng-show="isprogressing" alt="progressing..." title="progressing..." src="~/assets/img/progressbar.gif" />
+            </div>
+        </form>
+    </div>
+    <div class="row ht450 margin-top-20">
+        <div class="col-md-12">
+            <list-user keywords="keywords" orderby="orderby" istriggered="istriggered" isprogressing="isprogressing" startwith="startwith" pageno="pageno" pagesize="pagesize" blocksize="blocksize" />
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/assets/js/user.js"></script>
+    <script type="text/javascript">
+        var appModule = angular.module('appModule', ['userModule']);
+    </script>
+}
+
+
